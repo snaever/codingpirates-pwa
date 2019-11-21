@@ -31,7 +31,7 @@ export default {
   justify-content: center;
   height: 40vh;
   width: 100%;
-  background-image: url('../assets/img/pixels-grey.png');
+  background-image: url('../assets/img/pixel_grey.svg');
   background-repeat: repeat;
   background-position: center bottom;
 
