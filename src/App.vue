@@ -10,8 +10,9 @@
 @import '@/assets/scss/_all.scss';
 
 .container {
-  max-width: 748px;
+  max-width: 788px;
   margin: auto;
-  padding: 0 10px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 </style>
