@@ -29,4 +29,8 @@
     }
   }
 }
+
+.container {
+  width: 768px;
+}
 </style>
