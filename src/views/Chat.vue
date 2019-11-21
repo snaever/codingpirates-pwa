@@ -47,6 +47,7 @@ export default {
 
     p {
         margin: 0;
+        line-height: 1.4;
     }
 
     &.sender {
