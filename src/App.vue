@@ -7,8 +7,11 @@
 <style lang="scss">
 @import 'normalize-scss';
 @include normalize();
+@import '@/assets/scss/_all.scss';
 
 .container {
-  width: 768px;
+  max-width: 748px;
+  margin: auto;
+  padding: 0 10px;
 }
 </style>
