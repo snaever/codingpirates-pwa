@@ -5,14 +5,14 @@
         <router-link to="/">
           <img src="../assets/icons/home.svg" alt="home" class="nav-icon">
         </router-link>
-        <router-link to="/">
-          <img src="../assets/icons/calendar.svg" alt="home" class="nav-icon">
+        <router-link to="/kalender">
+          <img src="../assets/icons/calendar.svg" alt="calendar" class="nav-icon">
         </router-link>
-        <router-link to="/">
-          <img src="../assets/icons/chat.svg" alt="home" class="nav-icon">
+        <router-link to="/chat">
+          <img src="../assets/icons/chat.svg" alt="chat" class="nav-icon">
         </router-link>
-        <router-link to="/">
-        <img src="../assets/icons/more.svg" alt="home" class="nav-icon">
+        <router-link to="/mere">
+        <img src="../assets/icons/more.svg" alt="more" class="nav-icon">
         </router-link>
       </nav>
     </div>
