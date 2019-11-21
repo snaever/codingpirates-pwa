@@ -1,27 +1,60 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header class="info">
+      <div class="container">
+        <div class="attendee">
+          <div class="image"></div>
+          <div class="details">
+            <h2>Pirat Piratson</h2>
+            <p>Coding Pirates Umbraco</p>
+          </div>
+        </div>
+      </div>
+    </header>
     <Navigation />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import Navigation from '@/components/Navigation.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
     Navigation
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import 'normalize-scss';
-@include normalize();
 @import '@/assets/scss/_all.scss';
+
+.info {
+  height: 20vh;
+  width: 100%;
+  background-image: url('../assets/img/pixel_blue.svg');
+  background-repeat: repeat;
+  background-position: center bottom;
+
+  .attendee {
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    justify-content: space-around;
+    align-items: center;
+
+    .image {
+      width: 97px;
+      height: 97px;
+      background-color: red;
+      border-radius: 100%;
+    }
+
+    .details {
+      h2, p {
+        margin: 0;
+      }
+    }
+  }
+}
 </style>
