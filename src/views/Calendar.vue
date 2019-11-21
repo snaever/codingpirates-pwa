@@ -35,8 +35,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'normalize-scss';
-@include normalize();
 @import '@/assets/scss/_all.scss';
 
 .container {
