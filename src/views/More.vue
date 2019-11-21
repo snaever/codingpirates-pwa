@@ -2,13 +2,15 @@
   <div class="Mere">
     <Topbar pageTitle="Mere" />
     <div class="container">
-      <div class="item">
-        <img src="../assets/icons/settings.svg" alt="home" class="more-icon">
-        <div class="item-title">Kontoindstillinger</div>
-      </div>
-      <div class="item">
-        <img src="../assets/icons/permissions.svg" alt="home" class="more-icon">
-        <div class="item-title">Tilladelser</div>
+      <div class="menu-items">
+        <div class="item">
+          <img src="../assets/icons/settings.svg" alt="home" class="more-icon">
+          <div class="item-title">Kontoindstillinger</div>
+        </div>
+        <div class="item">
+          <img src="../assets/icons/permissions.svg" alt="home" class="more-icon">
+          <div class="item-title">Tilladelser</div>
+        </div>
       </div>
       <router-link to="/login" class="button">Log ud</router-link>
     </div>
@@ -35,8 +37,10 @@ export default {
 
 .container {
   margin-top: 80px;
-  position: relative;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item {
@@ -58,20 +62,17 @@ export default {
 }
 
 .button {
-  display: block;
   width: 100%;
   border: none;
   background-color: $red;
   cursor: pointer;
   text-align: center;
   color: $light-gray;
-  position: absolute;
-  bottom: 20px;
-  left: 0;
   height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  margin-bottom: 20px;
 }
 </style>
