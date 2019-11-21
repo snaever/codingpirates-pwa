@@ -1,6 +1,6 @@
 <template>
   <div class="topbar">
-    <h1>{{ msg }}</h1>
+    <h1>{{ pageTitle }}</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'Topbar',
   props: {
-    msg: String
+    pageTitle: String
   }
 }
 </script>
@@ -24,5 +24,14 @@ export default {
   top: 0;
   width: 100%;
   height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-family: 'Bungee', cursive;
+    font-size: 22pt;
+  }
 }
+
 </style>
