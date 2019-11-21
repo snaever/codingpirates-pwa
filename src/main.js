@@ -4,6 +4,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import 'normalize-scss';
+import 'remove-focus-outline';
 
 Vue.config.productionTip = false;
 
