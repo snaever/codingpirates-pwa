@@ -160,6 +160,7 @@ export default {
       margin: 0 0 0 25px;
       color: $blue;
       font-size: 13pt;
+      font-weight: bold;
     }
 
     .message {
