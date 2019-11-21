@@ -6,11 +6,13 @@
 
     <div class="container">
       <div class="loginForm">
-        <form action="post">
-          <input type="text" name="username" id="username" placeholder="Email" />
-          <input type="password" name="password" id="password" placeholder="Password" />
-          <input type="button" value="Log ind" />
-        </form>
+        <router-link to="/">
+          <form action="post">
+            <input type="text" name="username" id="username" placeholder="Email" />
+            <input type="password" name="password" id="password" placeholder="Password" />
+            <input type="button" value="Log ind" />
+          </form>
+        </router-link>
       </div>
     </div>
   </div>
