@@ -9,6 +9,11 @@
 @include normalize();
 @import '@/assets/scss/_all.scss';
 
+body {
+  font-family: $body-font;
+  font-size: 11pt;
+}
+
 .container {
   max-width: 788px;
   margin: 0 auto;
