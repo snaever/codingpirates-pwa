@@ -1,43 +1,42 @@
 <template>
   <div class="home">
+    <div class="home-container">
+      <header class="info">
+        <div class="container">
+          <div class="attendee">
+            <div class="image"></div>
+            <div class="details">
+              <h2>Pirat Piratson</h2>
+              <p>Coding Pirates Umbraco</p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-    <header class="info">
       <div class="container">
-        <div class="attendee">
+        <div class="notice">
+          <h3>Næste gang</h3>
+          <p>Onsdag d. 23 oktober</p>
+          <p>17:00 - 18:30</p>
+        </div>
+
+        <div class="post">
           <div class="image"></div>
-          <div class="details">
-            <h2>Pirat Piratson</h2>
-            <p>Coding Pirates Umbraco</p>
+          <div class="box">
+            <p class="author">Frivillige Frida</p>
+            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+          </div>
+        </div>
+
+        <div class="post">
+          <div class="image"></div>
+          <div class="box">
+            <p class="author">Frivillige Frida</p>
+            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
           </div>
         </div>
       </div>
-    </header>
-
-    <div class="container">
-      <div class="notice">
-        <h3>Næste gang</h3>
-        <p>Onsdag d. 23 oktober</p>
-        <p>17:00 - 18:30</p>
-      </div>
-
-      <div class="post">
-        <div class="image"></div>
-        <div class="box">
-          <p class="author">Frivillige Frida</p>
-          <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="image"></div>
-        <div class="box">
-          <p class="author">Frivillige Frida</p>
-          <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
-        </div>
-      </div>
-
     </div>
-
     <Navigation />
   </div>
 </template>
@@ -56,8 +55,12 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/scss/_all.scss';
 
+.home-container {
+  height: calc(100vh - #{$barsHeight});
+}
+
 .info {
-  height: 20vh;
+  height: 160px;
   width: 100%;
   background-image: url('../assets/img/pixel_blue.svg');
   background-repeat: repeat;
@@ -66,7 +69,7 @@ export default {
   .attendee {
     display: flex;
     width: 100%;
-    height: 20vh;
+    height: 160px;
     justify-content: space-around;
     align-items: center;
 
