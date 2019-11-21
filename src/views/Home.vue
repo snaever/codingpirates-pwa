@@ -46,13 +46,22 @@ export default {
     .image {
       width: 97px;
       height: 97px;
-      background-color: red;
+      background-color: #00aeee;
       border-radius: 100%;
     }
 
     .details {
-      h2, p {
+      max-width: 220px;
+      
+      h2 {
+        font-family: $heading-font;
+        font-size: 16pt;
         margin: 0;
+      }
+
+      p {
+        font-family: $body-font;
+        margin: 7px 0 0 0;
       }
     }
   }

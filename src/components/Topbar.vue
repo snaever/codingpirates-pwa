@@ -29,7 +29,7 @@ export default {
   align-items: center;
 
   h1 {
-    font-family: 'Bungee', cursive;
+    font-family: $heading-font;
     font-size: 22pt;
   }
 }
