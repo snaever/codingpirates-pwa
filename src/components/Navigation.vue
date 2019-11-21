@@ -35,12 +35,13 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 20px 0;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: 80px;
 
   .nav-icon {
     width: 35px;
