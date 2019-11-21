@@ -28,6 +28,14 @@
           </div>
         </div>
 
+         <div class="post">
+          <div class="image"></div>
+          <div class="box">
+            <p class="author">Frivillige Frida</p>
+            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+          </div>
+        </div>
+
         <div class="post">
           <div class="image"></div>
           <div class="box">
@@ -57,6 +65,7 @@ export default {
 
 .home-container {
   height: calc(100vh - #{$barsHeight});
+  overflow: scroll;
 }
 
 .info {
