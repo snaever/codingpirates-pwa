@@ -12,7 +12,7 @@
           <img src="../assets/icons/chat.svg" alt="chat" class="nav-icon">
         </router-link>
         <router-link to="/mere">
-        <img src="../assets/icons/more.svg" alt="more" class="nav-icon">
+          <img src="../assets/icons/more.svg" alt="more" class="nav-icon">
         </router-link>
       </nav>
     </div>
