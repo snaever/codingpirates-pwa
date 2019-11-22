@@ -3,16 +3,16 @@
     <div class="container">
       <nav class="nav-container">
         <router-link to="/">
-          <img src="../assets/icons/home.svg" alt="home" class="nav-icon">
+          <img src="../assets/icons/home.svg" alt="Kahytten" class="nav-icon">
         </router-link>
         <router-link to="/kalender">
-          <img src="../assets/icons/calendar.svg" alt="calendar" class="nav-icon">
+          <img src="../assets/icons/calendar.svg" alt="Kalender" class="nav-icon">
         </router-link>
-        <router-link to="/chat">
-          <img src="../assets/icons/chat.svg" alt="chat" class="nav-icon">
+        <router-link to="/beskeder">
+          <img src="../assets/icons/chat.svg" alt="Flaskepost" class="nav-icon">
         </router-link>
         <router-link to="/mere">
-          <img src="../assets/icons/more.svg" alt="more" class="nav-icon">
+          <img src="../assets/icons/more.svg" alt="Mere" class="nav-icon">
         </router-link>
       </nav>
     </div>
