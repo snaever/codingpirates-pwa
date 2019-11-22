@@ -1,6 +1,17 @@
 <template>
   <div class="topbar">
-    <h1>{{ pageTitle }}</h1>
+    <div class="container">
+      <div class="inner">
+        <div v-if="backButton" class="back">
+          <router-link :to="backButton">
+            <img src="../assets/icons/angle-left.svg" alt="Tilbage" />
+          </router-link>
+        </div>
+        <div v-else class="empty"></div>
+        <h1>{{ pageTitle }}</h1>
+        <div class="empty"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -8,7 +19,8 @@
 export default {
   name: 'Topbar',
   props: {
-    pageTitle: String
+    pageTitle: String,
+    backButton: String
   }
 }
 </script>
@@ -24,14 +36,28 @@ export default {
   top: 0;
   width: 100%;
   height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   h1 {
     font-family: $heading-font;
     font-size: 22pt;
   }
+
+  img {
+    height: 35px;
+    width: 35px;
+  }
+
+  .inner {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.empty {
+  width: 35px;
+  height: 35px;
 }
 
 </style>
