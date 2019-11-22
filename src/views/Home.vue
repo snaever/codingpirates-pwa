@@ -73,6 +73,7 @@ export default {
 .home-container {
   height: calc(100vh - #{$barsHeight});
   overflow: scroll;
+  padding-bottom: 30px;
 }
 
 .info {

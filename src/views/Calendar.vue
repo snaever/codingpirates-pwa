@@ -41,6 +41,7 @@ export default {
 
 .container {
   margin-top: 80px;
+  overflow: scroll;
 }
 
 .calendar-item {

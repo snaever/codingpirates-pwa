@@ -39,6 +39,7 @@ export default {
     margin-top: $barsHeight + 20px;
     position: relative;
     height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+    overflow: scroll;
 }
 
 .message {

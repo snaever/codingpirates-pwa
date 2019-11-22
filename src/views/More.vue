@@ -41,6 +41,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: scroll;
 }
 
 .item {

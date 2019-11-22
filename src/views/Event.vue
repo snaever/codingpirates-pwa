@@ -30,6 +30,7 @@ export default {
   margin-top: 80px;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   padding-top: 20px;
+  overflow: scroll;
 }
 
 .date {
