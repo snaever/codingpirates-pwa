@@ -1,6 +1,6 @@
 <template>
     <div class="chat">
-        <Topbar pageTitle="Besked" backButton="/kalender" />
+        <Topbar pageTitle="Besked" backButton="/beskeder" />
             <div class="container">
                 <div class="messages">
 

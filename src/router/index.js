@@ -38,6 +38,14 @@ const routes = [
     }
   },
   {
+    path: '/beskeder',
+    name: 'beskeder',
+    component: () => import('../views/MessagesList.vue'),
+    meta: {
+      title: 'Flaskepost'
+    }
+  },
+  {
     path: '/chat',
     name: 'chat',
     component: () => import('../views/Chat.vue'),
