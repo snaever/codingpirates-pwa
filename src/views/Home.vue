@@ -167,5 +167,9 @@ export default {
       line-height: 1.4;
     }
   }
+
+  &:last-child {
+    margin-bottom: 30px;
+  }
 }
 </style>
