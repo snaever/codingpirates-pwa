@@ -74,6 +74,6 @@ export default {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 </style>
