@@ -2,19 +2,21 @@
   <div class="kalender">
     <Topbar pageTitle="Kalender" />
     <div class="container">
-      <div class="calendar-item">
+      <router-link to="/event" class="calendar-item">
         <div class="calendar-date">21. nov</div>
         <div class="calendar-event">
           <div class="event-title">Klubaften</div>
           <div class="event-description">Der er kage i dag.</div>
         </div>
-      </div>
-      <div class="calendar-item">
+      </router-link>
+
+
+      <router-link to="/event" class="calendar-item">
         <div class="calendar-date">21. nov</div>
         <div class="calendar-event">
           <div class="event-title">Klubaften</div>
         </div>
-      </div>
+      </router-link>
     </div>
     <Navigation />
   </div>
@@ -47,6 +49,8 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: inherit;
+  text-decoration: none;
 
   .calendar-date {
     font-family: $heading-font;
