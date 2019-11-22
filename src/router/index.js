@@ -8,27 +8,42 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: {
+      title: 'Kahytten'
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue'),
+    meta: {
+      title: 'Log ind'
+    }
   },
   {
     path: '/kalender',
     name: 'kalender',
-    component: () => import('../views/Calendar.vue')
+    component: () => import('../views/Calendar.vue'),
+    meta: {
+      title: 'Kalender'
+    }
   },
   {
     path: '/mere',
     name: 'mere',
-    component: () => import('../views/More.vue')
+    component: () => import('../views/More.vue'),
+    meta: {
+      title: 'Mere'
+    }
   },
   {
     path: '/chat',
     name: 'chat',
-    component: () => import('../views/Chat.vue')
+    component: () => import('../views/Chat.vue'),
+    meta: {
+      title: 'Chat'
+    }
   }
 ];
 
@@ -36,5 +51,10 @@ const router = new VueRouter({
   mode: 'history',
   routes
 });
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title + ' - ' + 'Coding Pirates'
+  next()
+})
 
 export default router;
