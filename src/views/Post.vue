@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <Topbar pageTitle="Post" />
+    <Topbar pageTitle="Post" backButton="/" />
       <div class="container">
         <div class="author-container">
           <div class="image"></div>

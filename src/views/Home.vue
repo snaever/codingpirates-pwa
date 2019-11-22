@@ -20,29 +20,36 @@
           <p>17:00 - 18:30</p>
         </div>
 
-        <div class="post">
-          <div class="image"></div>
-          <div class="box">
-            <p class="author">Frivillige Frida</p>
-            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+        <router-link to="/post" class="post">
+          <div class="post">
+            <div class="image"></div>
+            <div class="box">
+              <p class="author">Frivillige Frida</p>
+              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+            </div>
           </div>
-        </div>
+        </router-link>
 
-         <div class="post">
-          <div class="image"></div>
-          <div class="box">
-            <p class="author">Frivillige Frida</p>
-            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+        <router-link to="/post" class="post">
+          <div class="post">
+            <div class="image"></div>
+            <div class="box">
+              <p class="author">Frivillige Frida</p>
+              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+            </div>
           </div>
-        </div>
+        </router-link>
 
-        <div class="post">
-          <div class="image"></div>
-          <div class="box">
-            <p class="author">Frivillige Frida</p>
-            <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+        <router-link to="/post" class="post">
+          <div class="post">
+            <div class="image"></div>
+            <div class="box">
+              <p class="author">Frivillige Frida</p>
+              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+            </div>
           </div>
-        </div>
+        </router-link>
+
       </div>
     </div>
     <Navigation />
@@ -123,6 +130,11 @@ export default {
     font-size: 13pt;
     margin: 5px 0;
   }
+}
+
+a.post {
+  color: inherit;
+  text-decoration: none;
 }
 
 .post {
