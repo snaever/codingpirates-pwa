@@ -60,6 +60,14 @@ const routes = [
     meta: {
       title: 'Post'
     }
+  },
+  {
+    path: '/event',
+    name: 'event',
+    component: () => import('../views/Event.vue'),
+    meta: {
+      title: 'Event'
+    }
   }
 ];
 
