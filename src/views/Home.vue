@@ -71,9 +71,8 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .home-container {
-  height: calc(100vh - #{$barsHeight});
-  overflow: scroll;
-  padding-bottom: 30px;
+  height: 100%;
+  margin-bottom: 120px;
 }
 
 .info {
@@ -136,6 +135,10 @@ export default {
 a.post {
   color: inherit;
   text-decoration: none;
+
+    &:last-child {
+      margin-bottom: 100px;
+  }
 }
 
 .post {
@@ -179,10 +182,6 @@ a.post {
     .message {
       line-height: 1.4;
     }
-  }
-
-  &:last-child {
-    margin-bottom: 30px;
   }
 }
 </style>

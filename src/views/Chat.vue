@@ -36,7 +36,8 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .messages {
-    margin-top: $barsHeight + 20px;
+    margin-top: $barsHeight;
+    padding-bottom: 120px;
     position: relative;
     height: calc(100vh - #{$barsHeight} - #{$barsHeight});
     overflow: scroll;
