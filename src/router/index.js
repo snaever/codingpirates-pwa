@@ -44,6 +44,11 @@ const routes = [
     meta: {
       title: 'Chat'
     }
+  },
+  {
+    path: '/post',
+    name: 'post',
+    component: () => import('../views/Post.vue')
   }
 ];
 
