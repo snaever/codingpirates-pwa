@@ -35,6 +35,7 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .nav-container {
