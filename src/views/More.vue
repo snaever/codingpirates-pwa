@@ -1,5 +1,5 @@
 <template>
-  <div class="Mere">
+  <div class="mere">
     <Topbar pageTitle="Mere" />
     <div class="container">
       <div class="menu-items">
