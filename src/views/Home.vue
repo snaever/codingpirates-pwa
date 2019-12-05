@@ -6,7 +6,7 @@
           <div class="attendee">
             <div class="image"></div>
             <div class="details">
-              <h2>Pirat Piratson</h2>
+              <h2>{{ this.$store.state.username ? this.$store.state.username : 'Pirat Piratson' }}</h2>
               <p>Coding Pirates Umbraco</p>
             </div>
           </div>

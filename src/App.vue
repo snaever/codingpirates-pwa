@@ -6,6 +6,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'app',
+  beforeCreate: function() {
+    this.$store.dispatch('authenticate');
+  }
+}
+</script>
+
 <style lang="scss">
 @import 'normalize-scss';
 @include normalize();

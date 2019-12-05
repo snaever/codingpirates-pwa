@@ -6,21 +6,28 @@
 
     <div class="container">
       <div class="loginForm">
-        <router-link to="/">
-          <form action="post">
-            <input type="text" name="username" id="username" placeholder="Email" />
-            <input type="password" name="password" id="password" placeholder="Password" />
-            <input type="button" value="Log ind" />
-          </form>
-        </router-link>
+        <form v-on:submit="onSubmit">
+          <input type="text" name="username" id="username" placeholder="Email" />
+          <input type="password" name="password" id="password" placeholder="Password" />
+          <button type="submit">Log ind</button>
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import * as auth from '../../services/AuthService'
+
 export default {
-  name: 'login'
+  name: 'login',
+  methods: {
+    onSubmit: function(event) {
+      event.preventDefault();
+      auth.login();
+      this.$router.push({ name: 'home' });
+    }
+  }
 };
 </script>
 
@@ -60,9 +67,10 @@ export default {
     box-sizing: border-box;
   }
 
-  input[type="button"] {
+  button {
     display: block;
     width: 100%;
+    height: 38px;
     border: none;
     background-color: $blue;
     cursor: pointer;

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
+const isLoggedIn = true;
+
 const routes = [
   {
     path: '/',
@@ -10,6 +12,13 @@ const routes = [
     component: () => import('../views/Home.vue'),
     meta: {
       title: 'Kahytten'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -18,6 +27,13 @@ const routes = [
     component: () => import('../views/authentication/Login.vue'),
     meta: {
       title: 'Log ind'
+    },
+    beforeEnter: (to, from, next) => {
+      if(!isLoggedIn) {
+        next();
+      } else {
+        next('/');
+      }
     }
   },
   {
@@ -26,6 +42,13 @@ const routes = [
     component: () => import('../views/authentication/Register.vue'),
     meta: {
       title: 'Tilføj bruger'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -34,6 +57,13 @@ const routes = [
     component: () => import('../views/Calendar.vue'),
     meta: {
       title: 'Kalender'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -42,6 +72,13 @@ const routes = [
     component: () => import('../views/More.vue'),
     meta: {
       title: 'Mere'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -50,6 +87,13 @@ const routes = [
     component: () => import('../views/MessagesList.vue'),
     meta: {
       title: 'Flaskepost'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -58,6 +102,13 @@ const routes = [
     component: () => import('../views/Chat.vue'),
     meta: {
       title: 'Chat'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -66,6 +117,13 @@ const routes = [
     component: () => import('../views/posts/Post.vue'),
     meta: {
       title: 'Post'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -74,6 +132,13 @@ const routes = [
     component: () => import('../views/posts/PostCreate.vue'),
     meta: {
       title: 'Tilføj opslag'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -82,6 +147,13 @@ const routes = [
     component: () => import('../views/posts/PostEdit.vue'),
     meta: {
       title: 'Rediger opslag'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
@@ -90,6 +162,13 @@ const routes = [
     component: () => import('../views/Event.vue'),
     meta: {
       title: 'Event'
+    },
+    beforeEnter: (to, from, next) => {
+      if(isLoggedIn) {
+        next();
+      } else {
+        next('/login');
+      }
     }
   },
   {
