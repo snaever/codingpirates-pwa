@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <header class="pixels">
-      <img class="logo" src="../assets/img/logo.svg" alt="Coding Pirates" />
+      <img class="logo" src="../../assets/img/logo.svg" alt="Coding Pirates" />
     </header>
 
     <div class="container">
@@ -33,7 +33,7 @@ export default {
   justify-content: center;
   height: 40vh;
   width: 100%;
-  background-image: url('../assets/img/pixel_grey.svg');
+  background-image: url('../../assets/img/pixel_grey.svg');
   background-repeat: repeat;
   background-position: center bottom;
 
