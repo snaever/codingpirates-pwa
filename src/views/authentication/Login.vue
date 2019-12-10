@@ -7,7 +7,7 @@
     <div class="container">
       <div class="loginForm">
         <form v-on:submit="onSubmit">
-          <input type="text" name="username" id="username" placeholder="Email" />
+          <input type="email" name="email" id="email" placeholder="Email" />
           <input type="password" name="password" id="password" placeholder="Password" />
           <button type="submit">Log ind</button>
         </form>

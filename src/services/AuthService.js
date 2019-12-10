@@ -7,7 +7,7 @@ export function isLoggedIn() {
 
 export function login() {
     const token = {
-        username: 'myUserName'
+        email: 'myLogin'
     }
     setToken(token);
 }
@@ -17,8 +17,8 @@ function setToken(token) {
     store.dispatch('authenticate');
 }
 
-export function getUsername() {
-    return 'myUserName';
+export function getLogin() {
+    return 'myLogin';
 }
 
 export function getUserId() {

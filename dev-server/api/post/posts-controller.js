@@ -1,24 +1,92 @@
+import User from '../../model/user-model';
+import Post from '../../model/post-model';
+import moment from 'moment';
+
 export function index(req, res) {
-        // FIND ALL POSTS
-        return res.json();
+    // FIND ALL POSTS
+    Post.find({}, (error, posts) => {
+        if (error) {
+            return res.status(500).json();
+        }
+        return res.status(200).json({ posts: posts });
+    }).populate('author', 'fullName', 'user')
 }
 
 export function create(req, res) {
     // CREATE POST
-    return res.json();
+    const id = 10;
+    User.findOne({ _id: id }, (error, user) => {
+        if (error && !user) {
+            return res.status(500).json();
+        }
+        const post = new Post(req,body.post);
+        post.author = user._id;
+        post.publishedDate = moment(post.publishedDate);
+
+        post.save(error => {
+            if (error) {
+                return res.status(500).json();
+            }
+            return res.status(201).json();
+        });
+    });
 }
 
 export function update(req, res) {
     // UPDATE POST
-    return res.json();
+    const id = 10;
+
+    User.findOne({ _id: id }, (error, user) => {
+        if (error) {
+            return res.status(500).json();
+        }
+        if (!user) {
+            return res.status(404).json();
+        }
+
+        const post = req.body.post;
+        post.author = user._id;
+        post.publishedDate = moment(post.publishedDate);
+        Post.findByIdAndUpdate({ _id: post._id }, post, error => {
+            if (error) {
+                return res.status(500).json();
+            }
+            return res.status(204).json();
+        });
+    });
 }
 
 export function remove(req, res) {
     // DELETE POST
-    return res.json();
+    const id = 5;
+    Post.findOne({ _id: req.params.id }, (error, post) => {
+        if (error) {
+            return res.status(500).json();
+        }
+        if (!post) {
+            return res.status(404).json();
+        }
+        if (post.author._id.toString() !== id) {
+            return res.status(403).json({ message: 'Not allowed to delete another user\'s post'});
+        }
+        Post.deleteOne({ _id: req.params.id }, error => {
+            if (error) {
+                return res.status(500).json();
+            }
+            return res.status(204).json();
+        });
+    });
 }
 
 export function show(req, res) {
     // GET POST BY ID
-    return res.json();
+    Post.findOne({ _id: req.params.id }, (error, post) => {
+        if (error) {
+            return res.status(500).json();
+        }
+        if (!post) {
+            return res.status(404).json();
+        }
+        return res.status(200).json({ post: post });
+    });
 }

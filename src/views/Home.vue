@@ -6,7 +6,7 @@
           <div class="attendee">
             <div class="image"></div>
             <div class="details">
-              <h2>{{ this.$store.state.username ? this.$store.state.username : 'Pirat Piratson' }}</h2>
+              <h2>{{ this.$store.state.email ? this.$store.state.email : 'Pirat Piratson' }}</h2>
               <p>Coding Pirates Umbraco</p>
             </div>
           </div>
@@ -68,7 +68,7 @@ export default {
     fetch(this.$store.state.apiUrl + '/api/user', {
       method: 'GET'
     })
-    .then(res => res.json())
+    // .then(res => res.json())
     .then(res => console.log(res));
   }
 }

@@ -9,8 +9,11 @@
     "dev": "concurrently \"export NODE_ENV=development\" \"babel dev-server --out-dir prod-server --watch\" \"nodemon prod-server/index.js\" \"npm run serve\" "
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "core-js": "^3.4.7",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.0",
     "normalize-scss": "^7.0.1",
     "register-service-worker": "^1.6.2",
     "remove-focus-outline": "^1.2.1",

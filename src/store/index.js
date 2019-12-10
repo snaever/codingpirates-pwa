@@ -8,17 +8,17 @@ export default new Vuex.Store({
   state: {
     isLoggedIn: false,
     apiUrl: 'http://localhost:3000',
-    username: null,
+    email: null,
     userId: null
   },
   mutations: {
     authenticate(state) {
       state.isLoggedIn = auth.isLoggedIn();
       if (state.isLoggedIn) {
-        state.username = auth.getUsername();
+        state.email = auth.getLogin();
         state.userId = auth.getUserId();
       } else {
-        state.username = null;
+        state.email = null;
         state.userId = null;
       }
     }
