@@ -1,11 +1,12 @@
 import express from 'express';
 const router = express.Router();
 import * as controller from './posts-controller';
+import * as auth from '../../services/auth-service';
 
-router.post('/post', controller.create);
-router.get('/post', controller.index);
-router.get('/post/:id', controller.show);
-router.put('/post', controller.update);
-router.delete('/post', controller.remove);
+router.post('/post', auth.requireLogin, controller.create);
+router.get('/post', auth.requireLogin, controller.index);
+router.get('/post/:id', auth.requireLogin, controller.show);
+router.put('/post', auth.requireLogin, controller.update);
+router.delete('/post', auth.requireLogin, controller.remove);
 
 export default router;
