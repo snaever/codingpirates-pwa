@@ -12,7 +12,7 @@
           <div class="item-title">Tilladelser</div>
         </div>
       </div>
-      <router-link to="/login" class="button">Log ud</router-link>
+      <a v-on:click.prevent="logout()" class="button">Log ud</a>
     </div>
     <Navigation />
   </div>
@@ -22,12 +22,19 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import * as auth from '../services/AuthService';
 
 export default {
-  name: 'calendar',
+  name: 'more',
   components: {
     Navigation,
     Topbar
+  },
+  methods: {
+    logout: function() {
+      auth.logout();
+      this.$router.push({ name: 'login' });
+    }
   }
 }
 </script>

@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import * as auth from '../services/AuthService';
 
 Vue.use(VueRouter);
-
-const isLoggedIn = false;
 
 const routes = [
   {
@@ -14,7 +13,7 @@ const routes = [
       title: 'Kahytten'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -29,7 +28,7 @@ const routes = [
       title: 'Log ind'
     },
     beforeEnter: (to, from, next) => {
-      if(!isLoggedIn) {
+      if(!auth.isLoggedIn()) {
         next();
       } else {
         next('/');
@@ -44,7 +43,7 @@ const routes = [
       title: 'Tilføj bruger'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -59,7 +58,7 @@ const routes = [
       title: 'Kalender'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -74,7 +73,7 @@ const routes = [
       title: 'Mere'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -89,7 +88,7 @@ const routes = [
       title: 'Flaskepost'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -104,7 +103,7 @@ const routes = [
       title: 'Chat'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -119,7 +118,7 @@ const routes = [
       title: 'Post'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -134,7 +133,7 @@ const routes = [
       title: 'Tilføj opslag'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -149,7 +148,7 @@ const routes = [
       title: 'Rediger opslag'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
@@ -164,7 +163,7 @@ const routes = [
       title: 'Event'
     },
     beforeEnter: (to, from, next) => {
-      if(isLoggedIn) {
+      if(auth.isLoggedIn()) {
         next();
       } else {
         next('/login');
