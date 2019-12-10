@@ -6,9 +6,9 @@
 
     <div class="container">
       <div class="loginForm">
-        <form v-on:submit="onSubmit">
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <input type="password" name="password" id="password" placeholder="Password" />
+        <form v-on:submit.prevent="onSubmit">
+          <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
+          <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
           <button type="submit">Log ind</button>
         </form>
       </div>
@@ -21,10 +21,19 @@ import * as auth from '../../services/AuthService'
 
 export default {
   name: 'login',
+  data: function() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
   methods: {
-    onSubmit: function(event) {
-      event.preventDefault();
-      auth.login();
+    onSubmit: async function() {
+      const user = {
+        email: this.email,
+        password: this.password
+      }
+      await auth.login(user);
       this.$router.push({ name: 'home' });
     }
   }
@@ -61,6 +70,7 @@ export default {
   }
 
   input[type='text'],
+  input[type='email'],
   input[type='password'] {
     padding: 0 5px;
     border: 2px solid $blue;

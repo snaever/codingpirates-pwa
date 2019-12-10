@@ -1,15 +1,21 @@
 import store from '../store/index.js';
+import { http } from './HttpService';
 
 export function isLoggedIn() {
     const token = localStorage.getItem('token');
     return token != null;
 }
 
-export function login() {
-    const token = {
-        email: 'myLogin'
-    }
-    setToken(token);
+export function login(user) {
+    return http().post('/auth', user)
+    .then(res => {
+        if (res) {
+            const fakeToken = {
+                token: 'my-token'
+            }
+            setToken(fakeToken);
+        }
+    });
 }
 
 function setToken(token) {
@@ -23,4 +29,8 @@ export function getLogin() {
 
 export function getUserId() {
     return 1;
+}
+
+export function registerUser(user) {
+    return http().post('/register', user);
 }

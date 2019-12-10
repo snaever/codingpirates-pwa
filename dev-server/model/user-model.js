@@ -16,6 +16,10 @@ userSchema.virtual('fullName').get(function() {
     return `${firstname} ${lastname}`;
 });
 
+userSchema.statics.passwordMatches = function(password, hash) {
+    return bcrypt.compareSync(password, hash);
+}
+
 userSchema.pre('save', function(next) {
     const unsafePassword = this.password;
     this.password = bcrypt.hashSync(unsafePassword);
