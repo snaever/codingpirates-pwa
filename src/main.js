@@ -6,7 +6,7 @@ import store from './store';
 import 'normalize-scss';
 import 'remove-focus-outline';
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = process.env.NODE_ENV === 'production';
 
 new Vue({
   router,

@@ -15,10 +15,10 @@
         <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
         <div class="item-title">Tilføj begivenhed</div>
       </div>
-      <div class="item">
+      <router-link to="/post/new" class="item">
         <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
         <div class="item-title">Tilføj opslag</div>
-      </div>
+      </router-link>
       <router-link to="/register" class="item">
         <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
         <div class="item-title">Tilføj bruger</div>

@@ -21,7 +21,7 @@ export function create(req, res) {
         if (error && !user) {
             return res.status(500).json();
         }
-        const post = new Post(req,body.post);
+        const post = new Post(req.body.post);
         post.author = user._id;
         post.publishedDate = moment(post.publishedDate);
 

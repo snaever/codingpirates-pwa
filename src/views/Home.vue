@@ -6,7 +6,7 @@
           <div class="attendee">
             <div class="image"></div>
             <div class="details">
-              <h2>{{ this.$store.state.email ? this.$store.state.email : 'Pirat Piratson' }}</h2>
+              <h2>{{ this.$store.state.email ? this.$store.state.email : 'Ukendt bruger' }}</h2>
               <p>Coding Pirates Umbraco</p>
             </div>
           </div>
@@ -20,35 +20,30 @@
           <p>17:00 - 18:30</p>
         </div>
 
-        <router-link to="/post" class="post">
-          <div class="post">
-            <div class="image"></div>
-            <div class="box">
-              <p class="author">Frivillige Frida</p>
-              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
-            </div>
-          </div>
-        </router-link>
+        
+        <div v-if="posts && posts.length > 0">
 
-        <router-link to="/post" class="post">
-          <div class="post">
-            <div class="image"></div>
-            <div class="box">
-              <p class="author">Frivillige Frida</p>
-              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
-            </div>
-          </div>
-        </router-link>
+          <div v-for="post in posts" v-bind:key="post._id">
+            <router-link to="/post" class="post">
+              <div class="post">
+                <div class="image"></div>
+                <div class="box">
+                  <p class="author">{{ post.author.firstname }}</p>
+                  <p class="message">{{ post.body }}</p>
+                </div>
+              </div>
+            </router-link>
 
-        <router-link to="/post" class="post">
-          <div class="post">
-            <div class="image"></div>
-            <div class="box">
-              <p class="author">Frivillige Frida</p>
-              <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod et velit eget luctus. Praesent vitae porttitor purus. Nam a nulla a arcu sagittis faucibus in ut nisl. Quisque vel efficitur dui. Praesent sed ipsum aliquam, sodales lacus eget, efficitur nulla.</p>
+            <div v-if="post.author._id === $store.state.userId">
+              <router-link :to="{ name: 'post-edit', params: { id: post._id } }" exact>Rediger</router-link>
+              <a v-on:click.prevent="currentPostId = post._id" v-on:click="deletePost" href="#">Slet</a>
             </div>
+
           </div>
-        </router-link>
+
+        </div>
+
+        <div v-if="posts && posts.length  === 0">Ingen opslag fundet.</div>
 
       </div>
     </div>
@@ -58,18 +53,41 @@
 
 <script>
 import Navigation from '@/components/Navigation.vue'
+import * as postService from '../services/PostService'
 
 export default {
   name: 'home',
+  data: function() {
+    return {
+      posts: null,
+      currentPostId: null
+    }
+  },
   components: {
     Navigation
   },
   beforeCreate: function() {
-    fetch(this.$store.state.apiUrl + '/api/user', {
+    fetch(this.$store.state.apiUrl + '/user', {
       method: 'GET'
     })
     // .then(res => res.json())
     .then(res => console.log(res));
+  },
+  beforeRouteEnter(to, from, next) {
+    postService.getAllPosts()
+    .then(res => {
+      next(vm => {
+        vm.posts = res.data.posts;
+      });
+    });
+  },
+  methods: {
+    deletePost: async function() {
+      await postService.deletePost(this.currentPostId);
+      const index = this.posts.findIndex(post => post._id === this.currentPostId);
+      this.posts.splice(index, 1);
+      this.currentPostId = null;
+    }
   }
 }
 </script>
