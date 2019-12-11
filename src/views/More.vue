@@ -2,17 +2,35 @@
   <div class="mere">
     <Topbar pageTitle="Mere" />
     <div class="container">
-      <div class="menu-items">
-        <div class="item">
-          <img src="../assets/icons/settings.svg" alt="home" class="more-icon">
-          <div class="item-title">Kontoindstillinger</div>
-        </div>
-        <div class="item">
-          <img src="../assets/icons/permissions.svg" alt="home" class="more-icon">
-          <div class="item-title">Tilladelser</div>
-        </div>
+      <div class="item">
+        <img src="../assets/icons/settings.svg" alt="settings" class="more-icon">
+        <div class="item-title">Kontoindstillinger</div>
       </div>
-      <a v-on:click.prevent="logout()" class="button">Log ud</a>
+      <div class="item">
+        <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
+        <div class="item-title">Tilladelser</div>
+      </div>
+      <div v-on:click.prevent="logout()" class="item">
+        <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
+        <div class="item-title">Logud</div>
+      </div>
+      <h3>Admin adgang</h3>
+      <div class="item">
+        <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
+        <div class="item-title">Tilføj begivenhed</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
+        <div class="item-title">Tilføj opslag</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
+        <div class="item-title">Tilføj bruger</div>
+      </div>
+      <div class="item">
+        <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
+        <div class="item-title">Slet bruger</div>
+      </div>
     </div>
     <Navigation />
   </div>
@@ -43,11 +61,10 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: 80px;
+  margin-top: $barsHeight;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: scroll;
 }
 
@@ -60,6 +77,7 @@ export default {
 
   .more-icon {
     width: 35px;
+    height: 35px;
   }
 
   .item-title {
@@ -69,18 +87,10 @@ export default {
   }
 }
 
-.button {
-  width: 100%;
-  border: none;
-  background-color: $red;
-  cursor: pointer;
+h3 {
+  font-family: $heading-font;
+  font-size: 11pt;
+  margin: 40px 0 0 0;
   text-align: center;
-  color: $light-gray;
-  height: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  margin-bottom: 100px;
 }
 </style>
