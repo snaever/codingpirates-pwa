@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <Topbar pageTitle="Tilføj bruger" />
+    <Topbar pageTitle="Tilføj bruger" backButton="/mere"/>
     <div class="container">
       <div class="loginForm">
           <form v-on:submit.prevent="onSubmit">

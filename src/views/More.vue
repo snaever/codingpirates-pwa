@@ -6,10 +6,10 @@
         <img src="../assets/icons/settings.svg" alt="settings" class="more-icon">
         <div class="item-title">Kontoindstillinger</div>
       </div>
-      <div class="item">
+      <router-link to="/tilladelser" class="item">
         <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
         <div class="item-title">Tilladelser</div>
-      </div>
+      </router-link>
       <h3>Admin adgang</h3>
       <div class="item">
         <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
@@ -19,10 +19,10 @@
         <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
         <div class="item-title">Tilføj opslag</div>
       </div>
-      <div class="item">
+      <router-link to="/register" class="item">
         <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
         <div class="item-title">Tilføj bruger</div>
-      </div>
+      </router-link>
       <div class="item">
         <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
         <div class="item-title">Slet bruger</div>
@@ -74,6 +74,8 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: inherit;
+  text-decoration: none;
 
   .more-icon {
     width: 35px;

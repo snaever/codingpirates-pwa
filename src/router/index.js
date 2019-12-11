@@ -171,7 +171,7 @@ const routes = [
     }
   },
   {
-    path: '/permissions',
+    path: '/tilladelser',
     name: 'tilladelser',
     component: () => import('../views/Permissions.vue'),
     meta: {

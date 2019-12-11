@@ -1,6 +1,6 @@
 <template>
   <div class="tilladelser">
-    <Topbar pageTitle="Tilladelser" />
+    <Topbar pageTitle="Tilladelser" backButton="/mere"/>
     <div class="container">
       <div class="item">
         <div class="item-title">Der må tages billeder af mit barn</div>
