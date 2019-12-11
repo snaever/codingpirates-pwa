@@ -43,7 +43,7 @@ import Topbar from '@/components/Topbar.vue'
 import * as auth from '../services/AuthService';
 
 export default {
-  name: 'more',
+  name: 'mere',
   components: {
     Navigation,
     Topbar

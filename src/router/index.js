@@ -171,6 +171,21 @@ const routes = [
     }
   },
   {
+    path: '/permissions',
+    name: 'tilladelser',
+    component: () => import('../views/Permissions.vue'),
+    meta: {
+      title: 'Tilladelser'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
     path: '*',
     redirect: '/'
   }
