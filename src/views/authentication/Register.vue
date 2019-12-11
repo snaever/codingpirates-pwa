@@ -1,22 +1,32 @@
 <template>
   <div class="register">
-    <div class="loginForm">
-        <form v-on:submit.prevent="onSubmit">
-            <input v-model="firstname" type="text" name="firstname" id="firstname" placeholder="Fornavn" />
-            <input v-model="lastname" type="text" name="lastname" id="lastname" placeholder="Efternavn" />
-            <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
-            <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
-            <button type="submit">Tilføj bruger</button>
-        </form>
+    <Topbar pageTitle="Tilføj bruger" />
+    <div class="container">
+      <div class="loginForm">
+          <form v-on:submit.prevent="onSubmit">
+              <input v-model="firstname" type="text" name="firstname" id="firstname" placeholder="Fornavn" />
+              <input v-model="lastname" type="text" name="lastname" id="lastname" placeholder="Efternavn" />
+              <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
+              <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
+              <button type="submit">Tilføj bruger</button>
+          </form>
+      </div>
     </div>
+    <Navigation />
   </div>
 </template>
 
 <script>
+import Navigation from '@/components/Navigation.vue'
+import Topbar from '@/components/Topbar.vue'
 import * as auth from '../../services/AuthService'
 
 export default {
   name: 'register',
+  components: {
+    Navigation,
+    Topbar
+  },
   data: function() {
       return {
           email: '',
