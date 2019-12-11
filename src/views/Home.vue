@@ -66,13 +66,6 @@ export default {
   components: {
     Navigation
   },
-  beforeCreate: function() {
-    fetch(this.$store.state.apiUrl + '/user', {
-      method: 'GET'
-    })
-    // .then(res => res.json())
-    .then(res => console.log(res));
-  },
   beforeRouteEnter(to, from, next) {
     postService.getAllPosts()
     .then(res => {

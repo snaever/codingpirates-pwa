@@ -21,8 +21,8 @@ function setDevEnv(app) {
 }
 
 function setProdEnv(app) {
-    process.env.DB_URL = 'mongodb://localhost:27017/codingpirates-db-prod'
+    process.env.DB_URL = 'mongodb+srv://cpDbUser:A2pF7TzvEwQyXnIt@cp-db-lqdoo.mongodb.net/?retryWrites=true&w=majority'
     process.env.TOKEN_SECRET = 'A259BC3F8DE526E6187838C686131'
     app.use(bodyParser.json());
-    app.use(express.static(__dirname + '/../dist'));
+    app.use(express.static(__dirname + '/../../dist'));
 }
