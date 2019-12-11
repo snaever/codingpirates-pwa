@@ -10,10 +10,6 @@
         <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
         <div class="item-title">Tilladelser</div>
       </div>
-      <div v-on:click.prevent="logout()" class="item">
-        <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
-        <div class="item-title">Logud</div>
-      </div>
       <h3>Admin adgang</h3>
       <div class="item">
         <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
@@ -30,6 +26,10 @@
       <div class="item">
         <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
         <div class="item-title">Slet bruger</div>
+      </div>
+      <div v-on:click.prevent="logout()" class="item">
+        <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
+        <div class="logout-title">Logud</div>
       </div>
     </div>
     <Navigation />
@@ -84,6 +84,13 @@ export default {
     padding-left: 10px;
     font-size: 13pt;
     font-weight: bold;
+  }
+
+  .logout-title {
+    padding-left: 10px;
+    font-size: 13pt;
+    font-weight: bold;
+    color: $red;
   }
 }
 
