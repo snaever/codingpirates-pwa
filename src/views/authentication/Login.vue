@@ -5,13 +5,11 @@
     </header>
 
     <div class="container">
-      <div class="loginForm">
-        <form v-on:submit.prevent="onSubmit">
-          <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
-          <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
-          <button type="submit">Log ind</button>
-        </form>
-      </div>
+      <form v-on:submit.prevent="onSubmit">
+        <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
+        <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
+        <button type="submit">Log ind</button>
+      </form>
     </div>
   </div>
 </template>
@@ -60,7 +58,7 @@ export default {
   }
 }
 
-.loginForm {
+.container {
   margin-top: 140px;
 
   input {
