@@ -13,11 +13,11 @@
       <h3>Admin adgang</h3>
       <div class="item">
         <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
-        <div class="item-title">Tilføj begivenhed</div>
+        <div class="item-title">Tilføj event</div>
       </div>
       <router-link to="/post/ny" class="item">
         <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
-        <div class="item-title">Tilføj opslag</div>
+        <div class="item-title">Tilføj post</div>
       </router-link>
       <router-link to="/registrer" class="item">
         <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">

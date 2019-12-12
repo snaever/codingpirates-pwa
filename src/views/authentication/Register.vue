@@ -2,14 +2,12 @@
   <div class="register">
     <Topbar pageTitle="Tilføj bruger" backButton="/mere"/>
     <div class="container">
-      <div class="loginForm">
-          <form v-on:submit.prevent="onSubmit">
-              <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
-              <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
-              <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
-              <button type="submit">Tilføj bruger</button>
-          </form>
-      </div>
+      <form v-on:submit.prevent="onSubmit">
+          <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
+          <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
+          <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
+          <button type="submit">Tilføj bruger</button>
+      </form>
     </div>
     <Navigation />
   </div>
@@ -51,8 +49,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/_all.scss';
 
-.loginForm {
-  margin-top: 140px;
+.container {
+  margin-top: 120px;
 
   input {
     width: 100%;
