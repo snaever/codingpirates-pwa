@@ -34,7 +34,7 @@ export default {
         password: this.password
       }
       await auth.login(user);
-      this.$router.push({ name: 'home' });
+      this.$router.push({ name: 'hjem' });
     }
   }
 };

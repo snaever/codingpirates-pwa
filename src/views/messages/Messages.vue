@@ -3,15 +3,12 @@
         <Topbar pageTitle="Besked" backButton="/beskeder" />
             <div class="container">
                 <div class="messages">
-
                     <div class="message sender">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
                     </div>
-
                     <div class="message receiver">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
                     </div>
-
                 </div>
             </div>
         <Navigation />
@@ -24,7 +21,7 @@ import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
 
 export default {
-  name: 'chat',
+  name: 'besked',
   components: {
     Navigation,
     Topbar

@@ -18,7 +18,7 @@ import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
 
 export default {
-  name: 'calendar',
+  name: 'post',
   components: {
     Navigation,
     Topbar

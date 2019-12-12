@@ -1,5 +1,5 @@
 <template>
-  <div class="create-post">
+  <div class="create-event">
     <div class="container">
         <form v-on:submit.prevent="onSubmit">
             <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
@@ -15,7 +15,7 @@
     import * as postService from '../../services/PostService'
 
     export default {
-        name: 'post-ny',
+        name: 'event-ny',
         data: function() {
             return {
                 post: {

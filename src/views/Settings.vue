@@ -1,5 +1,5 @@
 <template>
-  <div class="indstillinger">
+  <div class="settings">
     <Topbar pageTitle="Indstillinger" backButton="/mere"/>
     <div class="container">
     </div>

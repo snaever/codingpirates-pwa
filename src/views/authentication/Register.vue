@@ -21,7 +21,7 @@ import Topbar from '@/components/Topbar.vue'
 import * as auth from '../../services/AuthService'
 
 export default {
-  name: 'register',
+  name: 'registrer',
   components: {
     Navigation,
     Topbar

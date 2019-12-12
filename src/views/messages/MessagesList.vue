@@ -1,21 +1,17 @@
 <template>
     <div class="messages">
         <Topbar pageTitle="Flaskepost" />
-
-        <div class="container">
-
-            <router-link to="/chat" class="message-link">
-                <div class="message">
-                    <div class="message-header">
-                        <div class="message-subject">Sygdom</div>
-                        <div class="message-date">23. okt</div>
+            <div class="container">
+                <router-link to="/messages" class="message-link">
+                    <div class="message">
+                        <div class="message-header">
+                            <div class="message-subject">Sygdom</div>
+                            <div class="message-date">23. okt</div>
+                        </div>
+                        <div class="message-content">Der er kage i dag.</div>
                     </div>
-                    <div class="message-content">Der er kage i dag.</div>
-                </div>
-            </router-link>
-            
-        </div>
-
+                </router-link>
+            </div>
         <Navigation />
     </div>
 </template>

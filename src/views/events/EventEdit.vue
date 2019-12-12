@@ -1,11 +1,11 @@
 <template>
-  <div class="create-post">
+  <div class="edit-event">
     <div class="container">
         <form v-on:submit.prevent="onSubmit">
             <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
             <textarea v-model="post.body" name="body" id="body" cols="30" rows="10"></textarea>
             <input v-model="post.publishedDate" type="date" name="publishedDate" id="publishedDate" placeholder="Dato for udgivelse" />
-            <button type="submit">Gem opslag</button>
+            <button type="submit">Opdater opslag</button>
         </form>
     </div>
   </div>
@@ -13,9 +13,10 @@
 
 <script>
     import * as postService from '../../services/PostService'
+    import moment from 'moment';
 
     export default {
-        name: 'post-ny',
+        name: 'event-rediger',
         data: function() {
             return {
                 post: {
@@ -25,12 +26,26 @@
                 }
             }
         },
+        beforeRouteEnter(to, from, next) {
+            postService.getPostById(to.params.id)
+            .then(response => {
+                if (!response) {
+                    next('/');
+                } else {
+                    next(vm => {
+                        const post = response.data.post;
+                        post.publishedDate = moment(post.publishedDate).format('YYYY-MM-DD');
+                        vm.post = post;
+                    });
+                }
+            });
+        },
         methods: {
             onSubmit: async function() {
                 const request = {
                     post: this.post
                 }
-                await postService.createPost(request);
+                await postService.updatePost(request);
                 this.$router.push({ name: 'hjem' });
             }
         }

@@ -24,7 +24,7 @@
         <div v-if="posts && posts.length > 0">
 
           <div v-for="post in posts" v-bind:key="post._id">
-            <router-link to="/post" class="post">
+            <router-link :to="{ name: 'post', params: { id: post._id } }" exact class="post">
               <div class="post">
                 <div class="image"></div>
                 <div class="box">
@@ -35,7 +35,7 @@
             </router-link>
 
             <div v-if="post.author._id === $store.state.userId">
-              <router-link :to="{ name: 'post-edit', params: { id: post._id } }" exact>Rediger</router-link>
+              <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact>Rediger</router-link>
               <a v-on:click.prevent="currentPostId = post._id" v-on:click="deletePost" href="#">Slet</a>
             </div>
 
@@ -56,7 +56,7 @@ import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
 
 export default {
-  name: 'home',
+  name: 'hjem',
   data: function() {
     return {
       posts: null,

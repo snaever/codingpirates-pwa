@@ -1,5 +1,5 @@
 <template>
-  <div class="tilladelser">
+  <div class="permissions">
     <Topbar pageTitle="Tilladelser" backButton="/mere"/>
     <div class="container">
       <div class="item">

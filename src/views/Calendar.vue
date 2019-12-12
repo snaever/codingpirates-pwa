@@ -1,5 +1,5 @@
 <template>
-  <div class="kalender">
+  <div class="calendar">
     <Topbar pageTitle="Kalender" />
     <div class="container">
       <router-link to="/event" class="calendar-item">
@@ -28,7 +28,7 @@ import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
 
 export default {
-  name: 'calendar',
+  name: 'kalender',
   components: {
     Navigation,
     Topbar

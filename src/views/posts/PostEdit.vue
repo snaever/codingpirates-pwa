@@ -1,6 +1,5 @@
 <template>
-  <div class="editPost">
-
+  <div class="edit-post">
     <div class="container">
         <form v-on:submit.prevent="onSubmit">
             <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
@@ -17,7 +16,7 @@
     import moment from 'moment';
 
     export default {
-        name: 'post-edit',
+        name: 'post-rediger',
         data: function() {
             return {
                 post: {
@@ -47,7 +46,7 @@
                     post: this.post
                 }
                 await postService.updatePost(request);
-                this.$router.push({ name: 'home' });
+                this.$router.push({ name: 'hjem' });
             }
         }
     }
