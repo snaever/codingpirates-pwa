@@ -2,7 +2,7 @@
     <div class="messages">
         <Topbar pageTitle="Flaskepost" />
             <div class="container">
-                <router-link to="/messages" class="message-link">
+                <router-link to="/beskeder/2" class="message-link">
                     <div class="message">
                         <div class="message-header">
                             <div class="message-subject">Sygdom</div>

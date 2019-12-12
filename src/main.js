@@ -5,6 +5,9 @@ import router from './router';
 import store from './store';
 import 'normalize-scss';
 import 'remove-focus-outline';
+import { Datetime } from 'vue-datetime';
+ 
+Vue.component('datetime', Datetime);
 
 Vue.config.productionTip = process.env.NODE_ENV === 'production';
 

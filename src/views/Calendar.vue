@@ -2,21 +2,22 @@
   <div class="calendar">
     <Topbar pageTitle="Kalender" />
     <div class="container">
-      <router-link to="/event" class="calendar-item">
-        <div class="calendar-date">21. nov</div>
-        <div class="calendar-event">
-          <div class="event-title">Klubaften</div>
-          <div class="event-description">Der er kage i dag.</div>
-        </div>
-      </router-link>
 
+      <div v-if="events && events.length > 0">
 
-      <router-link to="/event" class="calendar-item">
-        <div class="calendar-date">21. nov</div>
-        <div class="calendar-event">
-          <div class="event-title">Klubaften</div>
+        <div v-for="event in events" v-bind:key="event._id">
+          <router-link to="/event" class="calendar-item">
+            <div class="calendar-date">{{ event.dateFrom }}</div>
+            <div class="calendar-event">
+              <div class="event-title">{{ event.title }}</div>
+            </div>
+          </router-link>
         </div>
-      </router-link>
+
+      </div>
+
+      <div v-if="events && events.length  === 0">Ingen events fundet.</div>
+
     </div>
     <Navigation />
   </div>
@@ -26,12 +27,26 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import * as eventService from '../services/EventService'
 
 export default {
   name: 'kalender',
+  data: function() {
+    return {
+      events: null
+    }
+  },
   components: {
     Navigation,
     Topbar
+  },
+    beforeRouteEnter(to, from, next) {
+    eventService.getAllEvents()
+    .then(res => {
+      next(vm => {
+        vm.events = res.data.events;
+      });
+    });
   }
 }
 </script>

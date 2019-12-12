@@ -7,6 +7,10 @@
         <textarea v-model="event.body" name="body" id="body" cols="30" rows="10" placeholder="Beskrivelse"></textarea>
         <input v-model="event.dateFrom" type="text" name="dateFrom" id="dateFrom" placeholder="Dato fra" />
         <input v-model="event.dateTo" type="text" name="dateTo" id="dateTo" placeholder="Dato til (valgfri)" />
+
+<datetime type="datetime" v-model="datetimeTheming" class="theme-orange"></datetime>
+
+        
         <div class="event-type">
           <p>Almindelig klubaften?</p>
           <label class="switch">
@@ -22,41 +26,58 @@
 </template>
 
 <script>
-    import * as eventService from '../../services/EventService'
-    import Navigation from '@/components/Navigation.vue'
-    import Topbar from '@/components/Topbar.vue'
+import * as eventService from '../../services/EventService'
+import Navigation from '@/components/Navigation.vue'
+import Topbar from '@/components/Topbar.vue'
+import 'vue-datetime/dist/vue-datetime.css'
 
-    export default {
-        name: 'event-ny',
-        components: {
-          Navigation,
-          Topbar
-        },
-        data: function() {
-            return {
-                event: {
-                    title: '',
-                    body: '',
-                    dateTo: '',
-                    dateFrom: '',
-                    regularSession: false
-                }
-            }
-        },
-        methods: {
-            onSubmit: async function() {
-                const request = {
-                    event: this.event
-                }
-                await eventService.createEvent(request);
-                this.$router.push({ name: 'kalender' });
+export default {
+    name: 'event-ny',
+    components: {
+      Navigation,
+      Topbar
+    },
+    data: function() {
+        return {
+            event: {
+                title: '',
+                body: '',
+                dateTo: '',
+                dateFrom: '',
+                regularSession: false
             }
         }
+    },
+    methods: {
+        onSubmit: async function() {
+            const request = {
+                event: this.event
+            }
+            await eventService.createEvent(request);
+            this.$router.push({ name: 'kalender' });
+        }
     }
+}
+
+import { Settings } from 'luxon'
+Settings.defaultLocale = 'da'
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/_all.scss';
+
+.theme-orange .vdatetime-popup__header,
+.theme-orange .vdatetime-calendar__month__day--selected > span > span,
+.theme-orange .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: #FF9800;
+}
+
+.theme-orange .vdatetime-year-picker__item--selected,
+.theme-orange .vdatetime-time-picker__item--selected,
+.theme-orange .vdatetime-popup__actions__button {
+  color: #ff9800;
+}
+
 
 .container {
   margin-top: 120px;
@@ -161,4 +182,5 @@
     align-items: center;
     margin-bottom: 20px;
 }
+
 </style>
