@@ -124,7 +124,6 @@ export default {
   .item-title {
     padding-left: 10px;
     font-size: 13pt;
-    font-weight: bold;
   }
 }
 </style>
