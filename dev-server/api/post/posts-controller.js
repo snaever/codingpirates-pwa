@@ -23,7 +23,6 @@ export function create(req, res) {
         }
         const post = new Post(req.body.post);
         post.author = user._id;
-        post.publishedDate = moment(post.publishedDate);
 
         post.save(error => {
             if (error) {
@@ -48,7 +47,6 @@ export function update(req, res) {
 
         const post = new Post(req.body.post);
         post.author = user._id;
-        post.publishedDate = moment(post.publishedDate);
         Post.findByIdAndUpdate({ _id: post._id }, post, error => {
             if (error) {
                 return res.status(500).json();

@@ -27,8 +27,7 @@ export default {
     return {
       post: {
         title: '',
-        body: '',
-        publishedDate: ''
+        body: ''
       }
     }
   },
