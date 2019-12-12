@@ -3,18 +3,11 @@ import bcrypt from 'bcrypt-nodejs';
 
 const userSchema = new mongoose.Schema({
     email: String,
-    firstname: String,
-    lastname: String,
+    name: String,
     nameOfChild: String,
     password: String
 });
 userSchema.set('timestamps', true);
-
-userSchema.virtual('fullName').get(function() {
-    const firstname = this.firstname;
-    const lastname = this.lastname;
-    return `${firstname} ${lastname}`;
-});
 
 userSchema.statics.passwordMatches = function(password, hash) {
     return bcrypt.compareSync(password, hash);

@@ -6,7 +6,7 @@
           <div class="attendee">
             <div class="image"></div>
             <div class="details">
-              <h2>{{ this.$store.state.email ? this.$store.state.email : 'Ukendt bruger' }}</h2>
+              <h2>{{ this.$store.state.name ? this.$store.state.name : 'Ukendt bruger' }}</h2>
               <p>Coding Pirates Umbraco</p>
             </div>
           </div>
@@ -28,7 +28,7 @@
               <div class="post">
                 <div class="image"></div>
                 <div class="box">
-                  <p class="author">{{ post.author.firstname }}</p>
+                  <p class="author">{{ post.author.name }}</p>
                   <p class="message">{{ post.body }}</p>
                 </div>
               </div>
@@ -80,6 +80,9 @@ export default {
       const index = this.posts.findIndex(post => post._id === this.currentPostId);
       this.posts.splice(index, 1);
       this.currentPostId = null;
+    },
+    getCurrentUser: function() {
+      return null;
     }
   }
 }

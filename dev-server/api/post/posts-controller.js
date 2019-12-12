@@ -10,7 +10,7 @@ export function index(req, res) {
             return res.status(500).json();
         }
         return res.status(200).json({ posts: posts });
-    }).populate('author', 'fullName', 'user')
+    }).populate('author', 'name', 'user')
 }
 
 export function create(req, res) {

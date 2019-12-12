@@ -4,8 +4,7 @@
     <div class="container">
       <div class="loginForm">
           <form v-on:submit.prevent="onSubmit">
-              <input v-model="firstname" type="text" name="firstname" id="firstname" placeholder="Fornavn" />
-              <input v-model="lastname" type="text" name="lastname" id="lastname" placeholder="Efternavn" />
+              <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
               <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
               <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
               <button type="submit">Tilføj bruger</button>
@@ -31,8 +30,7 @@ export default {
       return {
           email: '',
           password: '',
-          firstname: '',
-          lastname: ''
+          name: ''
       }
   },
   methods: {
@@ -40,8 +38,7 @@ export default {
       const user = {
           email: this.email,
           password: this.password,
-          firstname: this.firstname,
-          lastname: this.lastname
+          name: this.name
       }
       const registerPromise = auth.registerUser(user);
       await Promise.all([registerPromise]);

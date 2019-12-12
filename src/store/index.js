@@ -9,6 +9,7 @@ export default new Vuex.Store({
     isLoggedIn: false,
     apiUrl: `${window.location.protocol}//${window.location.hostname}:3000/api`,
     email: null,
+    name: null,
     userId: null
   },
   mutations: {
@@ -17,9 +18,11 @@ export default new Vuex.Store({
       if (state.isLoggedIn) {
         state.email = auth.getLogin();
         state.userId = auth.getUserId();
+        state.name = auth.getName();
       } else {
         state.email = null;
         state.userId = null;
+        state.name = null;
       }
     }
   },

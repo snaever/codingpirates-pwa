@@ -38,6 +38,14 @@ export function getLogin() {
     return token.user.email;
 }
 
+export function getName() {
+    const token = decodeToken();
+    if (!token) {
+        return null;
+    }
+    return token.user.name;
+}
+
 export function getUserId() {
     const token = decodeToken();
     if (!token) {

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export function generateJWT(user) {
-    const tokenData = { email: user.email, id: user._id };
+    const tokenData = { email: user.email, id: user._id, name: user.name };
     return jwt.sign({ user: tokenData }, process.env.TOKEN_SECRET);
 }
 
@@ -33,6 +33,14 @@ export function getLogin(req) {
         return null;
     }
     return token.user.email;
+}
+
+export function getName(req) {
+    const token = decodeToken(req);
+    if (!token) {
+        return null;
+    }
+    return token.user.name;
 }
 
 export function getUserId(req) {

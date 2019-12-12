@@ -10,8 +10,7 @@ export function index(req, res) {
     const user = new User ({
         email: req.body.email,
         password: req.body.password,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        name: req.body.name
     });
     user.save(error => {
         if (error) {
@@ -32,11 +31,8 @@ function validateIndex(body) {
     if(StringUtil.isEmpty(body.password)) {
         errors += 'Password is required. '
     }
-    if(StringUtil.isEmpty(body.firstname)) {
-        errors += 'Firstname is required. '
-    }
-    if(StringUtil.isEmpty(body.lastname)) {
-        errors += 'Lastname is required. '
+    if(StringUtil.isEmpty(body.name)) {
+        errors += 'Name is required. '
     }
 
     return {
