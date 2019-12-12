@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { EEXIST } from 'constants';
 
 export function connectToDB() {
     mongoose.connect(process.env.DB_URL, { useNewUrlParser: true }, error => {
