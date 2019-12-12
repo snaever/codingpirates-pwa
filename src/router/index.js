@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'hjem',
     component: () => import('../views/Home.vue'),
     meta: {
       title: 'Kahytten'
@@ -36,8 +36,8 @@ const routes = [
     }
   },
   {
-    path: '/register',
-    name: 'register',
+    path: '/registrer',
+    name: 'registrer',
     component: () => import('../views/authentication/Register.vue'),
     meta: {
       title: 'Tilføj bruger'
@@ -83,7 +83,7 @@ const routes = [
   {
     path: '/beskeder',
     name: 'beskeder',
-    component: () => import('../views/MessagesList.vue'),
+    component: () => import('../views/messages/MessagesList.vue'),
     meta: {
       title: 'Flaskepost'
     },
@@ -96,11 +96,11 @@ const routes = [
     }
   },
   {
-    path: '/chat',
-    name: 'chat',
-    component: () => import('../views/Chat.vue'),
+    path: '/beskeder/:id',
+    name: 'besked',
+    component: () => import('../views/messages/Messages.vue'),
     meta: {
-      title: 'Chat'
+      title: 'Besked'
     },
     beforeEnter: (to, from, next) => {
       if(auth.isLoggedIn()) {
@@ -111,7 +111,37 @@ const routes = [
     }
   },
   {
-    path: '/post',
+    path: '/post/ny',
+    name: 'post-ny',
+    component: () => import('../views/posts/PostCreate.vue'),
+    meta: {
+      title: 'Tilføj post'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
+    path: '/post/rediger/:id',
+    name: 'post-rediger',
+    component: () => import('../views/posts/PostEdit.vue'),
+    meta: {
+      title: 'Rediger post'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
+    path: '/post/:id',
     name: 'post',
     component: () => import('../views/posts/Post.vue'),
     meta: {
@@ -126,11 +156,11 @@ const routes = [
     }
   },
   {
-    path: '/post/new',
-    name: 'post-create',
-    component: () => import('../views/posts/PostCreate.vue'),
+    path: '/event/ny',
+    name: 'event-ny',
+    component: () => import('../views/events/EventCreate.vue'),
     meta: {
-      title: 'Tilføj opslag'
+      title: 'Tilføj event'
     },
     beforeEnter: (to, from, next) => {
       if(auth.isLoggedIn()) {
@@ -141,11 +171,11 @@ const routes = [
     }
   },
   {
-    path: '/post/:id',
-    name: 'post-edit',
-    component: () => import('../views/posts/PostEdit.vue'),
+    path: '/event/rediger/:id',
+    name: 'event-rediger',
+    component: () => import('../views/events/EventEdit.vue'),
     meta: {
-      title: 'Rediger opslag'
+      title: 'Rediger event'
     },
     beforeEnter: (to, from, next) => {
       if(auth.isLoggedIn()) {
@@ -156,11 +186,26 @@ const routes = [
     }
   },
   {
-    path: '/event',
+    path: '/event/:id',
     name: 'event',
-    component: () => import('../views/Event.vue'),
+    component: () => import('../views/events/Event.vue'),
     meta: {
       title: 'Event'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
+    path: '/indstillinger',
+    name: 'indstillinger',
+    component: () => import('../views/Settings.vue'),
+    meta: {
+      title: 'Indstillinger'
     },
     beforeEnter: (to, from, next) => {
       if(auth.isLoggedIn()) {
