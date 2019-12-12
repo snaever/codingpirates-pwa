@@ -7,14 +7,12 @@
             <p class="author">{{ post.author.name }}</p>
         </div>
         <p class="message">{{ post.body }}</p>
-
         <div v-if="post.author._id === $store.state.userId">
-          <div v-if="post._id">
-            <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact>Rediger</router-link>
-            <a v-on:click.prevent="deletePost(post._id)" href="#">Slet</a>
+          <div v-if="post._id" class="controllers">
+            <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact><img src="../../assets/icons/edit.svg" alt="edit" class="icon"></router-link>
+            <a v-on:click.prevent="deletePost(post._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
           </div>
         </div>
-
       </div>
     <Navigation />
   </div>
@@ -97,4 +95,14 @@ methods: {
   line-height: 1.4;
 }
 
+.controllers {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .icon {
+    height: 35px;
+    margin: 20px 0 0 20px;
+  }
+}
 </style>
