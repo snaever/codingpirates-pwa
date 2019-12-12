@@ -34,11 +34,6 @@
               </div>
             </router-link>
 
-            <div v-if="post.author._id === $store.state.userId">
-              <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact>Rediger</router-link>
-              <a v-on:click.prevent="currentPostId = post._id" v-on:click="deletePost" href="#">Slet</a>
-            </div>
-
           </div>
 
         </div>
@@ -59,8 +54,7 @@ export default {
   name: 'hjem',
   data: function() {
     return {
-      posts: null,
-      currentPostId: null
+      posts: null
     }
   },
   components: {
@@ -73,17 +67,6 @@ export default {
         vm.posts = res.data.posts;
       });
     });
-  },
-  methods: {
-    deletePost: async function() {
-      await postService.deletePost(this.currentPostId);
-      const index = this.posts.findIndex(post => post._id === this.currentPostId);
-      this.posts.splice(index, 1);
-      this.currentPostId = null;
-    },
-    getCurrentUser: function() {
-      return null;
-    }
   }
 }
 </script>

@@ -91,5 +91,5 @@ export function show(req, res) {
             return res.status(404).json();
         }
         return res.status(200).json({ post: post });
-    });
+    }).populate('author', 'name', 'user')
 }
