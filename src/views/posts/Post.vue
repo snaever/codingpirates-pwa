@@ -4,24 +4,61 @@
       <div class="container">
         <div class="author-container">
           <div class="image"></div>
-            <p class="author">Frivillige Frida</p>
+            <p class="author">{{ post.author.name }}</p>
         </div>
-        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
+        <p class="message">{{ post.body }}</p>
+
+        <div v-if="post.author._id === $store.state.userId">
+          <div v-if="post._id">
+            <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact>Rediger</router-link>
+            <a v-on:click.prevent="deletePost(post._id)" href="#">Slet</a>
+          </div>
+        </div>
+
       </div>
     <Navigation />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import * as postService from '../../services/PostService'
 
 export default {
   name: 'post',
   components: {
     Navigation,
     Topbar
+  },
+  data: function() {
+      return {
+          post: {
+              title: '',
+              body: '',
+              author: '',
+              id: ''
+          }
+      }
+  },
+  beforeRouteEnter(to, from, next) {
+    postService.getPostById(to.params.id)
+    .then(response => {
+        if (!response) {
+          next('/');
+        } else {
+          next(vm => {
+            const post = response.data.post;
+            vm.post = post;
+          });
+        }
+    });
+  },
+methods: {
+    deletePost: async function(postId) {
+      await postService.deletePost(postId);
+      this.$router.push({ name: 'hjem' })
+    }
   }
 }
 </script>
