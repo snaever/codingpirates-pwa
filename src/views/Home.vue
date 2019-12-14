@@ -19,11 +19,10 @@
           <p>Onsdag d. 23 oktober</p>
           <p>17:00 - 18:30</p>
         </div>
-
         
         <div v-if="posts && posts.length > 0">
 
-          <div v-for="post in posts" v-bind:key="post._id">
+          <div v-for="post in orderedPosts" v-bind:key="post._id">
             <router-link :to="{ name: 'post', params: { id: post._id } }" exact class="post">
               <div class="post">
                 <div class="image"></div>
@@ -49,6 +48,7 @@
 <script>
 import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
+import _ from 'lodash'
 
 export default {
   name: 'hjem',
@@ -67,6 +67,11 @@ export default {
         vm.posts = res.data.posts;
       });
     });
+  },
+  computed: {
+    orderedPosts: function () {
+      return _.orderBy(this.posts, 'createdAt', 'desc')
+    }
   }
 }
 </script>
