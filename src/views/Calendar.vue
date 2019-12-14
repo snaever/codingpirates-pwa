@@ -63,7 +63,7 @@ export default {
       })
     },
     orderedEvents: function () {
-      return _.orderBy(this.futureEvents, 'dateFrom', 'asc')
+      return _.orderBy(this.futureEvents, 'dateFrom', 'asc');
     }
   }
 }
