@@ -5,11 +5,36 @@
       <form v-on:submit.prevent="onSubmit">
         <input v-model="event.title" type="text" name="title" id="title" placeholder="Titel" />
         <textarea v-model="event.body" name="body" id="body" cols="30" rows="10" placeholder="Beskrivelse"></textarea>
-        <input v-model="event.dateFrom" type="text" name="dateFrom" id="dateFrom" placeholder="Dato fra" />
-        <input v-model="event.dateTo" type="text" name="dateTo" id="dateTo" placeholder="Dato til (valgfri)" />
+        
+        <datetime
+          type="datetime"
+          v-model="event.dateFrom"
+          name="dateFrom"
+          id="dateFrom"
+          class="datetime-picker"
+          value-zone="Europe/Copenhagen"
+          zone="Europe/Copenhagen"
+          :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
+          :phrases="{ok: 'Videre', cancel: 'Annuller'}"
+          :minute-step="15"
+          auto
+          placeholder="Dato fra">
+        </datetime>
 
-<datetime type="datetime" v-model="datetimeTheming" class="theme-orange"></datetime>
-
+        <datetime
+          type="datetime"
+          v-model="event.dateTo"
+          name="dateTo"
+          id="dateTo"
+          class="datetime-picker"
+          value-zone="Europe/Copenhagen"
+          zone="Europe/Copenhagen"
+          :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
+          :phrases="{ok: 'Videre', cancel: 'Annuller'}"
+          :minute-step="15"
+          auto
+          placeholder="Dato til (valgfri)">
+        </datetime>
         
         <div class="event-type">
           <p>Almindelig klubaften?</p>
@@ -63,21 +88,33 @@ import { Settings } from 'luxon'
 Settings.defaultLocale = 'da'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/scss/_all.scss';
 
-.theme-orange .vdatetime-popup__header,
-.theme-orange .vdatetime-calendar__month__day--selected > span > span,
-.theme-orange .vdatetime-calendar__month__day--selected:hover > span > span {
-  background: #FF9800;
+.datetime-picker .vdatetime-popup__header,
+.datetime-picker .vdatetime-calendar__month__day--selected > span > span,
+.datetime-picker .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: $blue;
 }
 
-.theme-orange .vdatetime-year-picker__item--selected,
-.theme-orange .vdatetime-time-picker__item--selected,
-.theme-orange .vdatetime-popup__actions__button {
-  color: #ff9800;
+.datetime-picker .vdatetime-year-picker__item--selected,
+.datetime-picker .vdatetime-time-picker__item--selected,
+.datetime-picker .vdatetime-popup__actions__button {
+  color: $blue;
 }
 
+.vdatetime.datetime-picker input.vdatetime-input {
+  width: 100%;
+  height: 38px;
+  margin-bottom: 20px;
+  padding: 0 5px;
+  border: 2px solid $blue!important;
+  box-sizing: border-box;
+}
+</style>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/_all.scss';
 
 .container {
   margin-top: 120px;
@@ -90,7 +127,7 @@ Settings.defaultLocale = 'da'
 
   input[type='text'] {
     padding: 0 5px;
-    border: 2px solid $blue;
+    border: 2px solid $blue!important;
     box-sizing: border-box;
   }
 
