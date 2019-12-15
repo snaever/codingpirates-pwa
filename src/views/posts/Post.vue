@@ -35,7 +35,7 @@ export default {
               title: '',
               body: '',
               author: '',
-              id: ''
+              _id: ''
           }
       }
   },

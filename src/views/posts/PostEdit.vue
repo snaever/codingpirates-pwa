@@ -1,6 +1,6 @@
 <template>
   <div class="edit-post">
-    <Topbar pageTitle="Rediger post" backButton="/"/>
+    <Topbar pageTitle="Rediger post" :backButton="'/post/' + post._id"/>
     <div class="container">
         <form v-on:submit.prevent="onSubmit">
             <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
@@ -27,7 +27,8 @@ export default {
     return {
       post: {
         title: '',
-        body: ''
+        body: '',
+        _id: ''
       }
     }
   },
