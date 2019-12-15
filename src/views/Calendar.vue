@@ -6,8 +6,8 @@
       <div v-if="events && events.length > 0">
 
         <div v-for="event in orderedEvents" v-bind:key="event._id">
-          <router-link to="/event" class="calendar-item">
-            <div class="calendar-date">{{ event.dateFrom | dateFormat }}</div>
+          <router-link :to="{ name: 'event', params: { id: event._id } }" exact class="calendar-item">
+            <div class="calendar-date">{{ event.dateTime | dateFormat }}</div>
             <div class="calendar-event">
               <div class="event-title">{{ event.title }}</div>
             </div>
@@ -51,19 +51,19 @@ export default {
     });
   },
   filters: {
-    dateFormat: function (dateFrom) {
+    dateFormat: function (dateTime) {
       moment.locale('da');
-      return moment(dateFrom).format('DD. MMM');
+      return moment(dateTime).format('DD. MMM');
     }
   },
   computed: {
     futureEvents: function () {
       return this.events.filter(function (event) {
-        return moment(event.dateFrom).isSameOrAfter(moment().format('YYYY-MM-DD'));
+        return moment(event.dateTime).isSameOrAfter(moment().format('YYYY-MM-DD'));
       })
     },
     orderedEvents: function () {
-      return _.orderBy(this.futureEvents, 'dateFrom', 'asc');
+      return _.orderBy(this.futureEvents, 'dateTime', 'asc');
     }
   }
 }

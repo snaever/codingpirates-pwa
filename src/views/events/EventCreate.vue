@@ -8,32 +8,18 @@
         
         <datetime
           type="datetime"
-          v-model="event.dateFrom"
-          name="dateFrom"
-          id="dateFrom"
+          v-model="event.dateTime"
+          name="dateTime"
+          id="dateTime"
           class="datetime-picker"
           value-zone="Europe/Copenhagen"
           zone="Europe/Copenhagen"
           :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
           :phrases="{ok: 'Videre', cancel: 'Annuller'}"
           :minute-step="15"
+          :min-datetime="dateNow"
           auto
-          placeholder="Dato fra">
-        </datetime>
-
-        <datetime
-          type="datetime"
-          v-model="event.dateTo"
-          name="dateTo"
-          id="dateTo"
-          class="datetime-picker"
-          value-zone="Europe/Copenhagen"
-          zone="Europe/Copenhagen"
-          :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
-          :phrases="{ok: 'Videre', cancel: 'Annuller'}"
-          :minute-step="15"
-          auto
-          placeholder="Dato til (valgfri)">
+          placeholder="Dato og tid">
         </datetime>
         
         <div class="event-type">
@@ -43,6 +29,7 @@
             <span class="slider round"></span>
           </label>
         </div>
+        
         <button type="submit">Tilføj event</button>
       </form>
     </div>
@@ -55,6 +42,7 @@ import * as eventService from '../../services/EventService'
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
 import 'vue-datetime/dist/vue-datetime.css'
+import moment from 'moment'
 
 export default {
     name: 'event-ny',
@@ -67,8 +55,7 @@ export default {
             event: {
                 title: '',
                 body: '',
-                dateTo: '',
-                dateFrom: '',
+                dateTime: '',
                 regularSession: false
             }
         }
@@ -81,6 +68,11 @@ export default {
             await eventService.createEvent(request);
             this.$router.push({ name: 'kalender' });
         }
+    },
+    computed: {
+      dateNow: function() {
+        return moment().startOf('day').toISOString();
+      }
     }
 }
 

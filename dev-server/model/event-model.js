@@ -4,8 +4,7 @@ const eventSchema = new mongoose.Schema({
     title: String,
     body: String,
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-    dateFrom: String,
-    dateTo: String,
+    dateTime: String,
     regularSession: Boolean
 });
 eventSchema.set('timestamps', true);
