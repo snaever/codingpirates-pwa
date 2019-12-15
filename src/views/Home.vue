@@ -14,11 +14,7 @@
       </header>
 
       <div class="container">
-        <div class="notice">
-          <h3>Næste gang</h3>
-          <p>Onsdag d. 23 oktober</p>
-          <p>17:00 - 18:30</p>
-        </div>
+        <NextEvent />
         
         <div v-if="posts && posts.length > 0">
 
@@ -46,6 +42,7 @@
 </template>
 
 <script>
+import NextEvent from '@/components/NextEvent.vue'
 import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
 import _ from 'lodash'
@@ -58,6 +55,7 @@ export default {
     }
   },
   components: {
+    NextEvent,
     Navigation
   },
   beforeRouteEnter(to, from, next) {
@@ -65,12 +63,12 @@ export default {
     .then(res => {
       next(vm => {
         vm.posts = res.data.posts;
-      });
-    });
+      })
+    })
   },
   computed: {
-    orderedPosts: function () {
-      return _.orderBy(this.posts, 'createdAt', 'desc')
+    orderedPosts: function() {
+      return _.orderBy(this.posts, 'createdAt', 'desc');
     }
   }
 }
@@ -119,25 +117,6 @@ export default {
         margin: 7px 0 0 0;
       }
     }
-  }
-}
-
-.notice {
-  display: block;
-  background-color: $dark-gray;
-  padding: 15px;
-  margin: 20px 0;
-
-  h3 {
-    font-family: $heading-font;
-    font-size: 11pt;
-    margin: 0 0 10px 0;
-  }
-
-  p {
-    font-family: $body-font;
-    font-size: 13pt;
-    margin: 5px 0;
   }
 }
 
