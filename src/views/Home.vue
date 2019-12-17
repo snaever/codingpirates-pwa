@@ -25,6 +25,7 @@
                 <div class="box">
                   <p class="author">{{ post.author.name }}</p>
                   <p class="message">{{ post.body }}</p>
+                  <p class="created">{{ post.createdAt | dateFormat }}</p>
                 </div>
               </div>
             </router-link>
@@ -46,6 +47,7 @@ import NextEvent from '@/components/NextEvent.vue'
 import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
 import _ from 'lodash'
+import moment from 'moment'
 
 export default {
   name: 'hjem',
@@ -65,6 +67,12 @@ export default {
         vm.posts = res.data.posts;
       })
     })
+  },
+  filters: {
+    dateFormat: function (createdAt) {
+      moment.locale('da');
+      return moment(createdAt).format('DD MMM. H:mm');
+    }
   },
   computed: {
     orderedPosts: function() {
@@ -147,7 +155,7 @@ a.post {
     width: 93%;
     margin-left: 7%;
     margin-top: 35px;
-    padding: 10px;
+    padding: 15px;
     box-sizing: border-box;
 
     @media screen and (min-width: 500px) {
@@ -169,6 +177,13 @@ a.post {
 
     .message {
       line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .created {
+      color: $blue;
+      margin-bottom: 0;
+      font-size: 8pt;
     }
   }
 }

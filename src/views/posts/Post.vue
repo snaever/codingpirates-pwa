@@ -4,7 +4,10 @@
       <div class="container">
         <div class="author-container">
           <div class="image"></div>
+          <div class="info">
             <p class="author">{{ post.author.name }}</p>
+            <p class="created">{{ post.createdAt | dateFormat }}</p>
+          </div>
         </div>
         <p class="message">{{ post.body }}</p>
         <div v-if="post.author._id === $store.state.userId">
@@ -22,6 +25,7 @@
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
 import * as postService from '../../services/PostService'
+import moment from 'moment'
 
 export default {
   name: 'post',
@@ -52,7 +56,13 @@ export default {
         }
     });
   },
-methods: {
+  filters: {
+    dateFormat: function (createdAt) {
+      moment.locale('da');
+      return moment(createdAt).format('DD MMM. H:mm');
+    }
+  },
+  methods: {
     deletePost: async function(postId) {
       await postService.deletePost(postId);
       this.$router.push({ name: 'hjem' })
@@ -83,11 +93,21 @@ methods: {
     border-radius: 100%;
   }
 
-  .author {
-    margin: 0 0 0 25px;
-    color: $blue;
-    font-size: 13pt;
-    font-weight: bold;
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    .author {
+        margin: 0 0 5px 25px;
+        color: $blue;
+        font-size: 13pt;
+        font-weight: bold;
+      }
+
+      .created {
+        margin: 0 0 0 25px;
+        font-size: 8pt;
+      }
   }
 }
 
