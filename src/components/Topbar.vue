@@ -9,7 +9,12 @@
         </div>
         <div v-else class="empty"></div>
         <h1>{{ pageTitle }}</h1>
-        <div class="empty"></div>
+        <div v-if="addMessage" class="back">
+          <router-link :to="addMessage">
+            <img src="../assets/icons/plus.svg" alt="Tilbage" />
+          </router-link>
+        </div>
+        <div v-else class="empty"></div>
       </div>
     </div>
   </div>
@@ -20,7 +25,8 @@ export default {
   name: 'Topbar',
   props: {
     pageTitle: String,
-    backButton: String
+    backButton: String,
+    addMessage: String
   }
 }
 </script>

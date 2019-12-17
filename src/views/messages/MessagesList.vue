@@ -1,6 +1,6 @@
 <template>
     <div class="messages">
-        <Topbar pageTitle="Flaskepost" />
+        <Topbar pageTitle="Flaskepost" addMessage="/beskeder/ny"/>
             <div class="container">
                 <router-link to="/beskeder/2" class="message-link">
                     <div class="message">
