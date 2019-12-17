@@ -91,6 +91,7 @@ export default {
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
 }
 </style>

@@ -139,6 +139,7 @@ Settings.defaultLocale = 'da'
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
 }
 

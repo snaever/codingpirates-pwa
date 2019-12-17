@@ -96,10 +96,10 @@ export default {
   .info {
     display: flex;
     flex-direction: column;
+    color: $blue;
 
     .author {
         margin: 0 0 5px 25px;
-        color: $blue;
         font-size: 13pt;
         font-weight: bold;
       }
