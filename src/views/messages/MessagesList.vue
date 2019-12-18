@@ -5,10 +5,10 @@
       <router-link to="/beskeder/2" class="message-link">
         <div class="message">
           <div class="message-header">
-          <div class="message-subject">Sygdom</div>
-          <div class="message-date">23. okt</div>
-        </div>
-        <div class="message-content">Der er kage i dag.</div>
+            <div class="message-subject">Sygdom</div>
+            <div class="message-date">23. okt</div>
+          </div>
+          <p class="message-content">Der er kage i dag.</p>
         </div>
       </router-link>
     </div>
@@ -61,7 +61,7 @@ export default {
   }
 
   &-content {
-    margin-top: 10px;
+    margin: 10px 0 0;
   }
 }
 

@@ -47,13 +47,13 @@ export default {
   margin-top: 20px;
 
   p {
-    margin-bottom: 0;
+    margin: 0;
     line-height: 1.4;
   }
 
   .created {
     color: $blue;
-    margin-bottom: 0;
+    margin-top: 10px;
     font-size: 8pt;
   }
 
