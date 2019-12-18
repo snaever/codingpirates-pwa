@@ -18,6 +18,11 @@
           </div>
 
           <button type="submit">Opdater konto</button>
+
+          <div v-if="user._id" class="controllers">
+            <a v-on:click.prevent="deleteUser(user._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
+          </div>
+
       </form>
 
     </div>
@@ -76,6 +81,10 @@ export default {
       }
       await userService.updateUser(request);
       this.$router.push({ name: 'brugerliste' });
+    },
+    deleteUser: async function(userId) {
+      await userService.deleteUser(userId);
+      this.$router.push({ name: 'brugerliste' })
     }
   }
 }
@@ -109,6 +118,17 @@ export default {
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+  }
+}
+
+.controllers {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .icon {
+    height: 35px;
+    margin: 20px 0 0 20px;
   }
 }
 
