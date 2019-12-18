@@ -10,23 +10,26 @@
         <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
         <div class="item-title">Tilladelser</div>
       </router-link>
-      <h3>Admin adgang</h3>
-      <router-link to="/event/ny" class="item">
-        <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
-        <div class="item-title">Tilføj event</div>
-      </router-link>
-      <router-link to="/post/ny" class="item">
-        <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
-        <div class="item-title">Tilføj post</div>
-      </router-link>
-      <router-link to="/registrer" class="item">
-        <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
-        <div class="item-title">Tilføj bruger</div>
-      </router-link>
-      <div class="item">
-        <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
-        <div class="item-title">Slet bruger</div>
+      <div v-if="this.$store.state.isAdmin">
+        <h3>Admin adgang</h3>
+        <router-link to="/event/ny" class="item">
+          <img src="../assets/icons/add-event.svg" alt="add event" class="more-icon">
+          <div class="item-title">Tilføj event</div>
+        </router-link>
+        <router-link to="/post/ny" class="item">
+          <img src="../assets/icons/add-post.svg" alt="add post" class="more-icon">
+          <div class="item-title">Tilføj post</div>
+        </router-link>
+        <router-link to="/registrer" class="item">
+          <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
+          <div class="item-title">Tilføj bruger</div>
+        </router-link>
+        <div class="item">
+          <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
+          <div class="item-title">Slet bruger</div>
+        </div>
       </div>
+      
       <div v-on:click.prevent="logout()" class="item">
         <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
         <div class="logout-title">Logud</div>

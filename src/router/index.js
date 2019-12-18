@@ -51,7 +51,7 @@ const routes = [
       title: 'Tilføj bruger'
     },
     beforeEnter: (to, from, next) => {
-      if(auth.isLoggedIn()) {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
         next();
       } else {
         next('/login');
@@ -126,7 +126,7 @@ const routes = [
       title: 'Tilføj post'
     },
     beforeEnter: (to, from, next) => {
-      if(auth.isLoggedIn()) {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
         next();
       } else {
         next('/login');
@@ -141,7 +141,7 @@ const routes = [
       title: 'Rediger post'
     },
     beforeEnter: (to, from, next) => {
-      if(auth.isLoggedIn()) {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
         next();
       } else {
         next('/login');
@@ -171,7 +171,7 @@ const routes = [
       title: 'Tilføj event'
     },
     beforeEnter: (to, from, next) => {
-      if(auth.isLoggedIn()) {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
         next();
       } else {
         next('/login');
@@ -186,7 +186,7 @@ const routes = [
       title: 'Rediger event'
     },
     beforeEnter: (to, from, next) => {
-      if(auth.isLoggedIn()) {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
         next();
       } else {
         next('/login');

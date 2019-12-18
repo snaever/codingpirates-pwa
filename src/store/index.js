@@ -11,7 +11,8 @@ export default new Vuex.Store({
     email: null,
     name: null,
     nameOfChild: null,
-    userId: null
+    userId: null,
+    isAdmin: false
   },
   mutations: {
     authenticate(state) {
@@ -21,11 +22,13 @@ export default new Vuex.Store({
         state.userId = auth.getUserId();
         state.name = auth.getName();
         state.nameOfChild = auth.getNameOfChild();
+        state.isAdmin = auth.isAdmin();
       } else {
         state.email = null;
         state.userId = null;
         state.name = null;
         state.nameOfChild = null;
+        state.isAdmin = false;
       }
     }
   },

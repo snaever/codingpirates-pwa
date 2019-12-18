@@ -7,6 +7,14 @@ export function isLoggedIn() {
     return token != null;
 }
 
+export function isAdmin() {
+    const token = decodeToken();
+    if (!token) {
+        return null;
+    }
+    return token.user.isAdmin;
+}
+
 export function login(user) {
     return http().post('/auth', user)
     .then(res => {
