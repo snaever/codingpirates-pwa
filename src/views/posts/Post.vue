@@ -103,15 +103,15 @@ export default {
     color: $blue;
 
     .author {
-        margin: 0 0 5px 25px;
-        font-size: 13pt;
-        font-weight: bold;
-      }
+      margin: 0 0 5px 25px;
+      font-size: 13pt;
+      font-weight: bold;
+    }
 
-      .created {
-        margin: 0 0 0 25px;
-        font-size: 8pt;
-      }
+    .created {
+      margin: 0 0 0 25px;
+      font-size: 8pt;
+    }
   }
 }
 

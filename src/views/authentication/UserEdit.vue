@@ -2,29 +2,23 @@
   <div class="settings">
     <Topbar pageTitle="Konto" backButton="/brugere"/>
     <div class="container">
-
-        <form v-on:submit.prevent="onSubmit">
-          <input v-model="user.name" type="text" name="name" id="name" placeholder="Navn" />
-          <input v-model="user.email" type="email" name="email" id="email" placeholder="Email" />
-          <input v-model="user.newPassword" type="password" name="newPassword" id="newPassword" placeholder="Password" />
-          <input v-model="user.nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
-
-          <div class="user-type">
-            <p>Giv adminrettigheder</p>
-            <label class="switch">
-              <input v-model="user.isAdmin" type="checkbox" name="isAdmin" id="isAdmin">
-              <span class="slider round"></span>
-            </label>
-          </div>
-
-          <button type="submit">Opdater konto</button>
-
-          <div v-if="user._id" class="controllers">
-            <a v-on:click.prevent="deleteUser(user._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
-          </div>
-
+      <form v-on:submit.prevent="onSubmit">
+        <input v-model="user.name" type="text" name="name" id="name" placeholder="Navn" />
+        <input v-model="user.email" type="email" name="email" id="email" placeholder="Email" />
+        <input v-model="user.newPassword" type="password" name="newPassword" id="newPassword" placeholder="Password" />
+        <input v-model="user.nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
+        <div class="user-type">
+          <p>Giv adminrettigheder</p>
+          <label class="switch">
+            <input v-model="user.isAdmin" type="checkbox" name="isAdmin" id="isAdmin">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <button type="submit">Opdater konto</button>
+        <div v-if="user._id" class="controllers">
+          <a v-on:click.prevent="deleteUser(user._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
+        </div>
       </form>
-
     </div>
     <Navigation />
   </div>
@@ -118,6 +112,7 @@ export default {
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
 }
 
@@ -196,9 +191,9 @@ export default {
 }
 
 .user-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 </style>

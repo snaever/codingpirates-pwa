@@ -12,12 +12,9 @@
           </div>
         </div>
       </header>
-
       <div class="container">
         <NextEvent />
-        
         <div v-if="posts && posts.length > 0">
-
           <div v-for="post in orderedPosts" v-bind:key="post._id">
             <router-link :to="{ name: 'post', params: { id: post._id } }" exact class="post">
               <div class="post">
@@ -29,13 +26,9 @@
                 </div>
               </div>
             </router-link>
-
           </div>
-
         </div>
-
         <div v-if="posts && posts.length  === 0">Ingen opslag fundet.</div>
-
       </div>
     </div>
     <Navigation />

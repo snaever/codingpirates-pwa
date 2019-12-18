@@ -2,9 +2,7 @@
   <div class="calendar">
     <Topbar pageTitle="Brugere" backButton="/mere" addButton="/registrer" />
     <div class="container">
-
       <div v-if="users && users.length > 0">
-
         <div v-for="user in users" v-bind:key="user._id">
           <router-link :to="{ name: 'bruger-rediger', params: { id: user._id } }" exact class="user-item">
             <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=FF9900&color=fff&size=80&bold=true&name=' + encodeName(user.nameOfChild) + ')' }"></div>
@@ -14,11 +12,8 @@
             </div>
           </router-link>
         </div>
-
       </div>
-
       <div v-if="users && users.length  === 0">Ingen brugere fundet.</div>
-
     </div>
     <Navigation />
   </div>
@@ -41,15 +36,15 @@ export default {
     Navigation,
     Topbar
   },
-    beforeRouteEnter(to, from, next) {
-        userService.getAllUsers()
-        .then(res => {
-        next(vm => {
-            vm.users = res.data.users;
-        });
-        });
-    },
-    methods: {
+  beforeRouteEnter(to, from, next) {
+    userService.getAllUsers()
+    .then(res => {
+    next(vm => {
+        vm.users = res.data.users;
+    });
+    });
+  },
+  methods: {
     encodeName(name) {
       return window.encodeURIComponent(name);
     }
@@ -74,13 +69,13 @@ export default {
   color: inherit;
   text-decoration: none;
 
-.image {
+  .image {
     width: 40px;
     height: 40px;
     background-color: #FF9900;
     background-size: cover;
     border-radius: 100%;
-}
+  }
 
   .single-user {
     padding-left: 10px;

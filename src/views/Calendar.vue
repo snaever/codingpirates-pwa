@@ -2,9 +2,7 @@
   <div class="calendar">
     <Topbar pageTitle="Kalender" />
     <div class="container">
-
       <div v-if="events && events.length > 0">
-
         <div v-for="event in orderedEvents" v-bind:key="event._id">
           <router-link :to="{ name: 'event', params: { id: event._id } }" exact class="calendar-item">
             <div class="calendar-date">{{ event.dateTime | dateFormat }}</div>
@@ -13,11 +11,8 @@
             </div>
           </router-link>
         </div>
-
       </div>
-
       <div v-if="events && events.length  === 0">Ingen events fundet.</div>
-
     </div>
     <Navigation />
   </div>

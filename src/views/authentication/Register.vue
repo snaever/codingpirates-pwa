@@ -3,20 +3,18 @@
     <Topbar pageTitle="Tilføj bruger" backButton="/mere"/>
     <div class="container">
       <form v-on:submit.prevent="onSubmit">
-          <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
-          <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
-          <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
-          <input v-model="nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
-
-          <div class="user-type">
-            <p>Giv adminrettigheder</p>
-            <label class="switch">
-              <input v-model="isAdmin" type="checkbox" name="isAdmin" id="isAdmin">
-              <span class="slider round"></span>
-            </label>
-          </div>
-
-          <button type="submit">Tilføj bruger</button>
+        <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
+        <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
+        <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
+        <input v-model="nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
+        <div class="user-type">
+          <p>Giv adminrettigheder</p>
+          <label class="switch">
+            <input v-model="isAdmin" type="checkbox" name="isAdmin" id="isAdmin">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <button type="submit">Tilføj bruger</button>
       </form>
     </div>
     <Navigation />
@@ -35,22 +33,22 @@ export default {
     Topbar
   },
   data: function() {
-      return {
-          email: '',
-          password: '',
-          name: '',
-          nameOfChild: '',
-          isAdmin: false
-      }
+    return {
+      email: '',
+      password: '',
+      name: '',
+      nameOfChild: '',
+      isAdmin: false
+    }
   },
   methods: {
     onSubmit: async function() {
       const user = {
-          email: this.email,
-          password: this.password,
-          name: this.name,
-          nameOfChild: this.nameOfChild,
-          isAdmin: this.isAdmin
+        email: this.email,
+        password: this.password,
+        name: this.name,
+        nameOfChild: this.nameOfChild,
+        isAdmin: this.isAdmin
       }
       const registerPromise = auth.registerUser(user);
       await Promise.all([registerPromise]);
@@ -88,6 +86,7 @@ export default {
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
 }
 
@@ -155,9 +154,9 @@ export default {
 }
 
 .user-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 </style>

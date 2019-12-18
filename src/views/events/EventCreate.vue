@@ -5,7 +5,6 @@
       <form v-on:submit.prevent="onSubmit">
         <input v-model="event.title" type="text" name="title" id="title" placeholder="Titel" />
         <textarea v-model="event.body" name="body" id="body" cols="30" rows="10" placeholder="Beskrivelse"></textarea>
-        
         <datetime
           type="datetime"
           v-model="event.dateTime"
@@ -21,7 +20,6 @@
           auto
           placeholder="Dato og tid">
         </datetime>
-        
         <div class="event-type">
           <p>Almindelig klubaften?</p>
           <label class="switch">
@@ -29,7 +27,6 @@
             <span class="slider round"></span>
           </label>
         </div>
-        
         <button type="submit">Tilføj event</button>
       </form>
     </div>
@@ -45,35 +42,35 @@ import 'vue-datetime/dist/vue-datetime.css'
 import moment from 'moment'
 
 export default {
-    name: 'event-ny',
-    components: {
-      Navigation,
-      Topbar
-    },
-    data: function() {
-        return {
-            event: {
-                title: '',
-                body: '',
-                dateTime: '',
-                regularSession: false
-            }
-        }
-    },
-    methods: {
-        onSubmit: async function() {
-            const request = {
-                event: this.event
-            }
-            await eventService.createEvent(request);
-            this.$router.push({ name: 'kalender' });
-        }
-    },
-    computed: {
-      dateNow: function() {
-        return moment().startOf('day').toISOString();
+  name: 'event-ny',
+  components: {
+    Navigation,
+    Topbar
+  },
+  data: function() {
+    return {
+      event: {
+        title: '',
+        body: '',
+        dateTime: '',
+        regularSession: false
       }
     }
+  },
+  methods: {
+    onSubmit: async function() {
+      const request = {
+          event: this.event
+      }
+      await eventService.createEvent(request);
+      this.$router.push({ name: 'kalender' });
+    }
+  },
+  computed: {
+    dateNow: function() {
+      return moment().startOf('day').toISOString();
+    }
+  }
 }
 
 import { Settings } from 'luxon'
@@ -207,10 +204,9 @@ Settings.defaultLocale = 'da'
 }
 
 .event-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
-
 </style>

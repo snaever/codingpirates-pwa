@@ -2,11 +2,11 @@
   <div class="edit-post">
     <Topbar pageTitle="Rediger post" :backButton="'/post/' + post._id"/>
     <div class="container">
-        <form v-on:submit.prevent="onSubmit">
-            <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
-            <textarea v-model="post.body" name="body" id="body" cols="30" rows="10"></textarea>
-            <button type="submit">Opdater opslag</button>
-        </form>
+      <form v-on:submit.prevent="onSubmit">
+        <input v-model="post.title" type="text" name="title" id="title" placeholder="Titel" />
+        <textarea v-model="post.body" name="body" id="body" cols="30" rows="10"></textarea>
+        <button type="submit">Opdater opslag</button>
+      </form>
     </div>
     <Navigation />
   </div>

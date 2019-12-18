@@ -1,14 +1,12 @@
 <template>
-    <div class="notice">
-        <h3>Næste gang</h3>
-
-        <div v-for="event in events" v-bind:key="event._id">
-            {{ event.title }}
-        </div>
-
-        <p>Onsdag d. 23 oktober</p>
-        <p>17:00 - 18:30</p>
+  <div class="notice">
+    <h3>Næste gang</h3>
+    <div v-for="event in events" v-bind:key="event._id">
+        {{ event.title }}
     </div>
+    <p>Onsdag d. 23 oktober</p>
+    <p>17:00 - 18:30</p>
+  </div>
 </template>
 
 <script>
@@ -17,13 +15,13 @@ import moment from 'moment';
 import _ from 'lodash'
 
 export default {
-name: 'NextEvent',
-data: function() {
-    return {
-        events: null
-    }
-},
-beforeRouteEnter(to, from, next) {
+  name: 'NextEvent',
+  data: function() {
+      return {
+          events: null
+      }
+  },
+  beforeRouteEnter(to, from, next) {
     eventService.getAllEvents()
     .then(res => {
       next(vm => {

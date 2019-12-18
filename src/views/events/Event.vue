@@ -1,19 +1,17 @@
 <template>
   <div class="event">
     <Topbar pageTitle="Event" backButton="/kalender"/>
-      <div class="container">
-        <h1 class="title">{{ event.title }}</h1>
-        <p class="date">{{ event.dateTime | dateFormat }}</p>
-        <p class="message">{{ event.body }} </p>
-
-        <div v-if="event.author === $store.state.userId">
-          <div v-if="event._id" class="controllers">
-            <router-link :to="{ name: 'event-rediger', params: { id: event._id } }" exact><img src="../../assets/icons/edit.svg" alt="edit" class="icon"></router-link>
-            <a v-on:click.prevent="deleteEvent(event._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
-          </div>
+    <div class="container">
+      <h1 class="title">{{ event.title }}</h1>
+      <p class="date">{{ event.dateTime | dateFormat }}</p>
+      <p class="message">{{ event.body }} </p>
+      <div v-if="event.author === $store.state.userId">
+        <div v-if="event._id" class="controllers">
+          <router-link :to="{ name: 'event-rediger', params: { id: event._id } }" exact><img src="../../assets/icons/edit.svg" alt="edit" class="icon"></router-link>
+          <a v-on:click.prevent="deleteEvent(event._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
         </div>
-
       </div>
+    </div>
     <Navigation />
   </div>
 </template>

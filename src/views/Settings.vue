@@ -2,16 +2,13 @@
   <div class="settings">
     <Topbar pageTitle="Konto" backButton="/mere"/>
     <div class="container">
-
-        <form v-on:submit.prevent="onSubmit">
-          <input v-model="user.name" type="text" name="name" id="name" placeholder="Navn" />
-          <input v-model="user.email" type="email" name="email" id="email" placeholder="Email" />
-          <input v-model="user.newPassword" type="password" name="newPassword" id="newPassword" placeholder="Password" />
-          <input v-model="user.nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
-
-          <button type="submit">Opdater konto</button>
+      <form v-on:submit.prevent="onSubmit">
+        <input v-model="user.name" type="text" name="name" id="name" placeholder="Navn" />
+        <input v-model="user.email" type="email" name="email" id="email" placeholder="Email" />
+        <input v-model="user.newPassword" type="password" name="newPassword" id="newPassword" placeholder="Password" />
+        <input v-model="user.nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
+        <button type="submit">Opdater konto</button>
       </form>
-
     </div>
     <Navigation />
   </div>
@@ -101,7 +98,7 @@ export default {
     background-color: $blue;
     cursor: pointer;
     text-align: center;
+    color: white;
   }
 }
-
 </style>

@@ -3,7 +3,6 @@
     <header class="pixels">
       <img class="logo" src="../../assets/img/logo.svg" alt="Coding Pirates" />
     </header>
-
     <div class="container">
       <form v-on:submit.prevent="onSubmit">
         <input v-model="email" type="email" name="email" id="email" placeholder="Email" />

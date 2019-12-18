@@ -3,14 +3,14 @@
     <Topbar pageTitle="Tilladelser" backButton="/mere"/>
     <div class="container">
       <div class="item">
-        <div class="item-title">Der må tages billeder af mit barn</div>
+        <p class="item-title">Der må tages billeder af mit barn</p>
         <label class="switch">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
       </div>
       <div class="item">
-        <div class="item-title">Billeder af mit barn på bruges offentligt</div>
+        <p class="item-title">Billeder af mit barn på bruges offentligt</p>
         <label class="switch">
           <input type="checkbox">
           <span class="slider round"></span>

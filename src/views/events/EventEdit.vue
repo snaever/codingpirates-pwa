@@ -2,36 +2,33 @@
   <div class="edit-event">
     <Topbar pageTitle="Rediger event" :backButton="'/event/' + event._id"/>
     <div class="container">
-        <form v-on:submit.prevent="onSubmit">
-            <input v-model="event.title" type="text" name="title" id="title" placeholder="Titel" />
-            <textarea v-model="event.body" name="body" id="body" cols="30" rows="10"></textarea>
-
-              <datetime
-                type="datetime"
-                v-model="event.dateTime"
-                name="dateTime"
-                id="dateTime"
-                class="datetime-picker"
-                value-zone="Europe/Copenhagen"
-                zone="Europe/Copenhagen"
-                :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
-                :phrases="{ok: 'Videre', cancel: 'Annuller'}"
-                :minute-step="15"
-                :min-datetime="dateNow"
-                auto
-                placeholder="Dato og tid">
-              </datetime>
-
-            <div class="event-type">
-              <p>Almindelig klubaften?</p>
-              <label class="switch">
-                <input v-model="event.regularSession" type="checkbox" name="regularSession" id="regularSession">
-                <span class="slider round"></span>
-              </label>
-            </div>
-
-            <button type="submit">Opdater event</button>
-        </form>
+      <form v-on:submit.prevent="onSubmit">
+        <input v-model="event.title" type="text" name="title" id="title" placeholder="Titel" />
+        <textarea v-model="event.body" name="body" id="body" cols="30" rows="10"></textarea>
+        <datetime
+          type="datetime"
+          v-model="event.dateTime"
+          name="dateTime"
+          id="dateTime"
+          class="datetime-picker"
+          value-zone="Europe/Copenhagen"
+          zone="Europe/Copenhagen"
+          :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
+          :phrases="{ok: 'Videre', cancel: 'Annuller'}"
+          :minute-step="15"
+          :min-datetime="dateNow"
+          auto
+          placeholder="Dato og tid">
+        </datetime>
+        <div class="event-type">
+          <p>Almindelig klubaften?</p>
+          <label class="switch">
+            <input v-model="event.regularSession" type="checkbox" name="regularSession" id="regularSession">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <button type="submit">Opdater event</button>
+      </form>
     </div>
     <Navigation />
   </div>
@@ -219,9 +216,9 @@ Settings.defaultLocale = 'da'
 }
 
 .event-type {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 </style>
