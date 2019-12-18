@@ -21,7 +21,7 @@
           <div v-for="post in orderedPosts" v-bind:key="post._id">
             <router-link :to="{ name: 'post', params: { id: post._id } }" exact class="post">
               <div class="post">
-                <div class="image"></div>
+                <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=00AEEF&color=fff&size=108&bold=true&name=' + encodeName(post.author.name) + ')' }"></div>
                 <div class="box">
                   <p class="author">{{ post.author.name }}</p>
                   <p class="message">{{ post.body }}</p>
@@ -69,14 +69,22 @@ export default {
     })
   },
   filters: {
-    dateFormat: function (createdAt) {
+    dateFormat: function(createdAt) {
       moment.locale('da');
-      return moment(createdAt).format('DD MMM. H:mm');
+      return moment(createdAt).format('DD. MMM. HH:mm');
+    },
+    encodeName: function(name) {
+      return window.encodeURIComponent(name);
     }
   },
   computed: {
     orderedPosts: function() {
       return _.orderBy(this.posts, 'createdAt', 'desc');
+    }
+  },
+  methods: {
+    encodeName(name) {
+      return window.encodeURIComponent(name);
     }
   }
 }
@@ -147,6 +155,7 @@ a.post {
     width: 53px;
     height: 53px;
     background-color: $blue;
+    background-size: cover;
     border-radius: 100%;
   }
 
