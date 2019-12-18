@@ -1,18 +1,20 @@
 <template>
-    <div class="chat">
-        <Topbar pageTitle="Besked" backButton="/beskeder" />
-            <div class="container">
-                <div class="messages">
-                    <div class="message sender">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-                    </div>
-                    <div class="message receiver">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-                    </div>
-                </div>
-            </div>
-        <Navigation />
+  <div class="chat">
+    <Topbar pageTitle="Besked" backButton="/beskeder" />
+    <div class="container">
+      <div class="messages">
+        <div class="message sender">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
+          <p class="created">19 dec. 12:50</p>
+        </div>
+        <div class="message receiver">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
+          <p class="created">19 dec. 13:17</p>
+        </div>
+      </div>
     </div>
+    <Navigation />
+  </div>
 </template>
 
 <script>
@@ -33,30 +35,36 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .messages {
-    margin-top: $barsHeight;
-    padding-bottom: 120px;
-    position: relative;
-    height: calc(100vh - #{$barsHeight} - #{$barsHeight});
-    overflow: scroll;
+  margin-top: $barsHeight;
+  padding-bottom: 120px;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  overflow: scroll;
 }
 
 .message {
-    padding: 15px;
-    margin-top: 20px;
+  padding: 15px;
+  margin-top: 20px;
 
-    p {
-        margin: 0;
-        line-height: 1.4;
-    }
+  p {
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
 
-    &.sender {
-        background-color: $dark-gray;
-        margin-left: 15%;
-    }
+  .created {
+    color: $blue;
+    margin-bottom: 0;
+    font-size: 8pt;
+  }
 
-    &.receiver {
-        background-color: $light-gray;
-        margin-right: 15%;
-    }
+  &.sender {
+    background-color: $dark-gray;
+    margin-left: 15%;
+  }
+
+  &.receiver {
+    background-color: $light-gray;
+    margin-right: 15%;
+  }
 }
 </style>
