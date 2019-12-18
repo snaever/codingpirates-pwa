@@ -24,10 +24,10 @@
           <img src="../assets/icons/add-user.svg" alt="add user" class="more-icon">
           <div class="item-title">Tilføj bruger</div>
         </router-link>
-        <div class="item">
+        <router-link to="/brugere" class="item">
           <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
-          <div class="item-title">Slet bruger</div>
-        </div>
+          <div class="item-title">Aktive brugere (user-friends)</div>
+        </router-link>
       </div>
 
       <div v-on:click.prevent="logout()" class="item">

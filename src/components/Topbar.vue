@@ -9,8 +9,8 @@
         </div>
         <div v-else class="empty"></div>
         <h1>{{ pageTitle }}</h1>
-        <div v-if="addMessage" class="back">
-          <router-link :to="addMessage">
+        <div v-if="addButton" class="back">
+          <router-link :to="addButton">
             <img src="../assets/icons/plus.svg" alt="Tilbage" />
           </router-link>
         </div>
@@ -26,7 +26,7 @@ export default {
   props: {
     pageTitle: String,
     backButton: String,
-    addMessage: String
+    addButton: String
   }
 }
 </script>

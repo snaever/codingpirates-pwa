@@ -59,6 +59,36 @@ const routes = [
     }
   },
   {
+    path: '/brugere',
+    name: 'brugerliste',
+    component: () => import('../views/UsersList.vue'),
+    meta: {
+      title: 'Aktive brugere'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
+    path: '/bruger/rediger/:id',
+    name: 'bruger-rediger',
+    component: () => import('../views/authentication/UserEdit.vue'),
+    meta: {
+      title: 'Rediger bruger'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn() && auth.isAdmin()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  },
+  {
     path: '/kalender',
     name: 'kalender',
     component: () => import('../views/Calendar.vue'),
