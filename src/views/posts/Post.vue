@@ -1,22 +1,22 @@
 <template>
   <div class="post">
-    <Topbar pageTitle="Post" backButton="/" />
-      <div class="container">
-        <div class="author-container">
-          <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=00AEEF&color=fff&size=106&bold=true&name=' + encodeName(post.author.name) + ')' }"></div>
-          <div class="info">
-            <p class="author">{{ post.author.name }}</p>
-            <p class="created">{{ post.createdAt | dateFormat }}</p>
-          </div>
-        </div>
-        <p class="message">{{ post.body }}</p>
-        <div v-if="post.author._id === $store.state.userId">
-          <div v-if="post._id" class="controllers">
-            <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact><img src="../../assets/icons/edit.svg" alt="edit" class="icon"></router-link>
-            <a v-on:click.prevent="deletePost(post._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
-          </div>
+    <Topbar :pageTitle="post.title" backButton="/" />
+    <div class="container">
+      <div class="author-container">
+        <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=00AEEF&color=fff&size=106&bold=true&name=' + encodeName(post.author.name) + ')' }"></div>
+        <div class="info">
+          <p class="author">{{ post.author.name }}</p>
+          <p class="created">{{ post.createdAt | dateFormat }}</p>
         </div>
       </div>
+      <p class="message">{{ post.body }}</p>
+      <div v-if="post.author._id === $store.state.userId">
+        <div v-if="post._id" class="controllers">
+          <router-link :to="{ name: 'post-rediger', params: { id: post._id } }" exact><img src="../../assets/icons/edit.svg" alt="edit" class="icon"></router-link>
+          <a v-on:click.prevent="deletePost(post._id)" href="#"><img src="../../assets/icons/delete.svg" alt="delete" class="icon"></a>
+        </div>
+      </div>
+    </div>
     <Navigation />
   </div>
 </template>
