@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     email: String,
     name: String,
     nameOfChild: String,
-    password: String
+    password: String,
+    isAdmin: Boolean
 });
 userSchema.set('timestamps', true);
 

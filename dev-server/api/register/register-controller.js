@@ -10,7 +10,9 @@ export function index(req, res) {
     const user = new User ({
         email: req.body.email,
         password: req.body.password,
-        name: req.body.name
+        name: req.body.name,
+        nameOfChild: req.body.nameOfChild,
+        isAdmin: req.body.isAdmin
     });
     user.save(error => {
         if (error) {

@@ -10,6 +10,7 @@ export default new Vuex.Store({
     apiUrl: `${window.location.protocol}//${window.location.hostname}:3000/api`,
     email: null,
     name: null,
+    nameOfChild: null,
     userId: null
   },
   mutations: {
@@ -19,10 +20,12 @@ export default new Vuex.Store({
         state.email = auth.getLogin();
         state.userId = auth.getUserId();
         state.name = auth.getName();
+        state.nameOfChild = auth.getNameOfChild();
       } else {
         state.email = null;
         state.userId = null;
         state.name = null;
+        state.nameOfChild = null;
       }
     }
   },

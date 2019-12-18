@@ -46,6 +46,14 @@ export function getName() {
     return token.user.name;
 }
 
+export function getNameOfChild() {
+    const token = decodeToken();
+    if (!token) {
+        return null;
+    }
+    return token.user.nameOfChild;
+}
+
 export function getUserId() {
     const token = decodeToken();
     if (!token) {

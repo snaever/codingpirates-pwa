@@ -6,6 +6,16 @@
           <input v-model="name" type="text" name="name" id="name" placeholder="Navn" />
           <input v-model="email" type="email" name="email" id="email" placeholder="Email" />
           <input v-model="password" type="password" name="password" id="password" placeholder="Password" />
+          <input v-model="nameOfChild" type="text" name="nameOfChild" id="nameOfChild" placeholder="Barnets navn" />
+
+          <div class="user-type">
+            <p>Giv adminrettigheder</p>
+            <label class="switch">
+              <input v-model="isAdmin" type="checkbox" name="isAdmin" id="isAdmin">
+              <span class="slider round"></span>
+            </label>
+          </div>
+
           <button type="submit">Tilføj bruger</button>
       </form>
     </div>
@@ -28,7 +38,9 @@ export default {
       return {
           email: '',
           password: '',
-          name: ''
+          name: '',
+          nameOfChild: '',
+          isAdmin: false
       }
   },
   methods: {
@@ -36,7 +48,9 @@ export default {
       const user = {
           email: this.email,
           password: this.password,
-          name: this.name
+          name: this.name,
+          nameOfChild: this.nameOfChild,
+          isAdmin: this.isAdmin
       }
       const registerPromise = auth.registerUser(user);
       await Promise.all([registerPromise]);
@@ -75,5 +89,75 @@ export default {
     cursor: pointer;
     text-align: center;
   }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  /* Hide default HTML checkbox */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $dark-gray;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: $blue;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0px;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+.user-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 </style>

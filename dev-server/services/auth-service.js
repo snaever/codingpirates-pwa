@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export function generateJWT(user) {
-    const tokenData = { email: user.email, id: user._id, name: user.name };
+    const tokenData = { email: user.email, id: user._id, name: user.name, nameOfChild: user.nameOfChild, isAdmin: user.isAdmin };
     return jwt.sign({ user: tokenData }, process.env.TOKEN_SECRET);
 }
 

@@ -4,9 +4,9 @@
       <header class="info">
         <div class="container">
           <div class="attendee">
-            <div class="image"></div>
+            <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=00AEEF&color=fff&size=194&bold=true&name=' + encodeName(this.$store.state.nameOfChild) + ')' }"></div>
             <div class="details">
-              <h2>{{ this.$store.state.name ? this.$store.state.name : 'Ukendt bruger' }}</h2>
+              <h2>{{ this.$store.state.nameOfChild ? this.$store.state.nameOfChild : 'Ukendt bruger' }}</h2>
               <p>Coding Pirates Umbraco</p>
             </div>
           </div>
@@ -72,9 +72,6 @@ export default {
     dateFormat: function(createdAt) {
       moment.locale('da');
       return moment(createdAt).format('DD. MMM. HH:mm');
-    },
-    encodeName: function(name) {
-      return window.encodeURIComponent(name);
     }
   },
   computed: {
@@ -116,6 +113,7 @@ export default {
       width: 97px;
       height: 97px;
       background-color: #00aeee;
+      background-size: cover;
       border-radius: 100%;
     }
 
