@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <AddMessage />
     <Navigation />
   </div>
 </template>
@@ -21,12 +22,14 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import AddMessage from '@/components/AddMessage.vue'
 
 export default {
   name: 'besked',
   components: {
     Navigation,
-    Topbar
+    Topbar,
+    AddMessage
   }
 }
 </script>
@@ -38,7 +41,7 @@ export default {
   margin-top: $barsHeight;
   padding-bottom: 120px;
   position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} -80px);
   overflow: scroll;
 }
 

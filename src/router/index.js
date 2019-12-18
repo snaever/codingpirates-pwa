@@ -132,6 +132,20 @@ const routes = [
         next('/login');
       }
     }
+  },{
+    path: '/beskeder/ny',
+    name: 'besked',
+    component: () => import('../views/messages/MessageCreate.vue'),
+    meta: {
+      title: 'Ny besked'
+    },
+    beforeEnter: (to, from, next) => {
+      if(auth.isLoggedIn()) {
+        next();
+      } else {
+        next('/login');
+      }
+    }
   },
   {
     path: '/beskeder/:id',
