@@ -3,7 +3,7 @@
     <Topbar pageTitle="Post" backButton="/" />
       <div class="container">
         <div class="author-container">
-          <div class="image"></div>
+          <div class="image" :style="{ 'background-image': 'url(https://eu.ui-avatars.com/api/?background=00AEEF&color=fff&size=106&bold=true&name=' + encodeName(post.author.name) + ')' }"></div>
           <div class="info">
             <p class="author">{{ post.author.name }}</p>
             <p class="created">{{ post.createdAt | dateFormat }}</p>
@@ -66,6 +66,9 @@ export default {
     deletePost: async function(postId) {
       await postService.deletePost(postId);
       this.$router.push({ name: 'hjem' })
+    },
+    encodeName(name) {
+      return window.encodeURIComponent(name);
     }
   }
 }
@@ -90,6 +93,7 @@ export default {
     width: 53px;
     height: 53px;
     background-color: $blue;
+    background-size: cover;
     border-radius: 100%;
   }
 
