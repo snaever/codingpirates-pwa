@@ -2,10 +2,10 @@
   <div class="mere">
     <Topbar pageTitle="Mere" />
     <div class="container">
-      <div class="item">
+      <router-link to="/indstillinger" class="item">
         <img src="../assets/icons/settings.svg" alt="settings" class="more-icon">
         <div class="item-title">Kontoindstillinger</div>
-      </div>
+      </router-link>
       <router-link to="/tilladelser" class="item">
         <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
         <div class="item-title">Tilladelser</div>
@@ -29,10 +29,10 @@
           <div class="item-title">Slet bruger</div>
         </div>
       </div>
-      
+
       <div v-on:click.prevent="logout()" class="item">
         <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
-        <div class="logout-title">Logud</div>
+        <div class="logout-title">Log ud</div>
       </div>
     </div>
     <Navigation />

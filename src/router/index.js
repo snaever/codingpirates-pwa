@@ -213,7 +213,7 @@ const routes = [
     name: 'indstillinger',
     component: () => import('../views/Settings.vue'),
     meta: {
-      title: 'Indstillinger'
+      title: 'Kontoindstillinger'
     },
     beforeEnter: (to, from, next) => {
       if(auth.isLoggedIn()) {
