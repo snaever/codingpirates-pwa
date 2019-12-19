@@ -27,5 +27,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/scss/_all.scss';
-
+.container {
+  margin-top: $barsHeight;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - 80px);
+  overflow: scroll;
+}
 </style>

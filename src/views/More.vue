@@ -25,8 +25,8 @@
           <div class="item-title">Tilføj bruger</div>
         </router-link>
         <router-link to="/brugere" class="item">
-          <img src="../assets/icons/delete-user.svg" alt="delete user" class="more-icon">
-          <div class="item-title">Aktive brugere (user-friends)</div>
+          <img src="../assets/icons/users.svg" alt="edit users" class="more-icon">
+          <div class="item-title">Aktive brugere</div>
         </router-link>
       </div>
 
