@@ -1,8 +1,8 @@
 <template>
   <div class="add-message">
     <div class="container">
-      <form class="form">
-        <input type="text" name="message" id="message" placeholder="Skriv besked" />
+      <form class="form" v-on:submit.prevent="onSubmit">
+        <input v-model="message.body" type="text" name="body" id="body" placeholder="Skriv besked" />
         <button type="submit">Send</button>
       </form>
     </div>
@@ -11,7 +11,14 @@
 
 <script>
 export default {
-  name: 'AddMessage'
+  name: 'AddMessage',
+    data: function() {
+    return {
+      message: {
+        body: ''
+      }
+    }
+  }
 }
 </script>
 

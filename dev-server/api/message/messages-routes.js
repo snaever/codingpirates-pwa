@@ -1,12 +1,11 @@
 import express from 'express';
 const router = express.Router();
-import * as controller from './posts-controller';
+import * as controller from './messages-controller';
 import * as auth from '../../services/auth-service';
 
-router.post('/post', auth.requireLogin, controller.create);
-router.get('/post', auth.requireLogin, controller.index);
-router.get('/post/:id', auth.requireLogin, controller.show);
-router.put('/post', auth.requireLogin, controller.update);
-router.delete('/post/:id', auth.requireLogin, controller.remove);
+router.post('/message', auth.requireLogin, controller.create);
+router.get('/message', auth.requireLogin, controller.index);
+router.get('/message/:id', auth.requireLogin, controller.show);
+router.put('/message', auth.requireLogin, controller.update);
 
 export default router;

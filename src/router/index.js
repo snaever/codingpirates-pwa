@@ -134,7 +134,7 @@ const routes = [
     }
   },{
     path: '/beskeder/ny',
-    name: 'ny-besked',
+    name: 'besked-ny',
     component: () => import('../views/messages/MessageCreate.vue'),
     meta: {
       title: 'Ny besked'

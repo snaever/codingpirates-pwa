@@ -2,15 +2,25 @@
   <div class="messages">
     <Topbar pageTitle="Flaskepost" addButton="/beskeder/ny"/>
     <div class="container">
-      <router-link to="/beskeder/2" class="message-link">
-        <div class="message">
-          <div class="message-header">
-            <div class="message-subject">Sygdom</div>
-            <div class="message-date">23. okt</div>
-          </div>
-          <p class="message-content">Der er kage i dag.</p>
+
+      <div v-if="messages && messages.length > 0">
+        <div v-for="message in orderedMessages" v-bind:key="message._id">
+            
+          <router-link :to="{ name: 'besked', params: { id: message._id } }" exact class="message">
+            <div class="message">
+              <div class="message-header">
+                <div class="message-subject">{{ message.messages[message.messages.length-1].author.name }}</div>
+                <div class="message-date">{{ message.updatedAt | dateFormat }}</div>
+              </div>
+              <p class="message-content">{{ message.messages[message.messages.length-1].body }}</p>
+            </div>
+          </router-link>
+
         </div>
-      </router-link>
+      </div>
+
+      <div v-if="messages && messages.length  === 0">Ingen beskeder fundet.</div>
+
     </div>
     <Navigation />
   </div>
@@ -20,12 +30,39 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import * as messageService from '../../services/MessageService'
+import _ from 'lodash'
+import moment from 'moment'
 
 export default {
   name: 'beskeder',
   components: {
     Navigation,
     Topbar
+  },
+  data: function() {
+    return {
+      messages: null
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    messageService.getAllMessages()
+    .then(res => {
+      next(vm => {
+        vm.messages = res.data.messages;
+      })
+    })
+  },
+  filters: {
+    dateFormat: function(createdAt) {
+      moment.locale('da');
+      return moment(createdAt).format('DD. MMM. HH:mm');
+    }
+  },
+  computed: {
+    orderedMessages: function() {
+      return _.orderBy(this.messages, 'createdAt', 'desc');
+    }
   }
 }
 </script>
@@ -37,6 +74,11 @@ export default {
   margin-top: 80px;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
+}
+
+a.message {
+  color: inherit;
+  text-decoration: none;
 }
 
 .message {

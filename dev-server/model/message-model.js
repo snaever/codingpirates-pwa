@@ -1,9 +1,17 @@
 import mongoose from 'mongoose';
 
-const messageSchema = new mongoose.Schema({
-    body: String,
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
-});
-messageSchema.set('timestamps', true);
+const messageChildSchema = new mongoose.Schema({
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+    body: String
 
-export default mongoose.model('post', messageSchema);
+});
+messageChildSchema.set('timestamps', true);
+
+const messageParentSchema = new mongoose.Schema({
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+    messages: [messageChildSchema]
+
+});
+messageParentSchema.set('timestamps', true);
+
+export default mongoose.model('message', messageParentSchema);

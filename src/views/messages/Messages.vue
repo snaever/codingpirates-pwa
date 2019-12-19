@@ -1,21 +1,28 @@
 <template>
   <div class="chat">
     <Topbar pageTitle="Besked" backButton="/beskeder" />
-    <div class="container">
-      <div class="message sender">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-        <p class="created">19 dec. 12:50</p>
+    <div class="container" id="container">
+
+      <div v-for="message in orderedMessages" v-bind:key="message._id">
+        <div v-if="message.author">
+          <div class="message" :class="message.author._id === $store.state.userId ? 'sender' : 'receiver'">
+            <p>{{ message.body }}</p>
+            <p class="created">{{ message.createdAt | dateFormat }}</p>
+          </div>
+        </div>
       </div>
-      <div class="message receiver">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-        <p class="created">19 dec. 13:17</p>
-      </div>
-      <div class="message sender">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-        <p class="created">19 dec. 12:50</p>
+
+    </div>
+
+    <div class="add-message">
+      <div class="message-container">
+        <form class="form" v-on:submit.prevent="onSubmit">
+          <input v-model="message.messages.newBody" type="text" name="newBody" id="newBody" placeholder="Skriv besked" />
+          <button type="submit">Send</button>
+        </form>
       </div>
     </div>
-    <AddMessage />
+
     <Navigation />
   </div>
 </template>
@@ -24,14 +31,72 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
-import AddMessage from '@/components/AddMessage.vue'
+import * as messageService from '../../services/MessageService'
+import moment from 'moment'
+import _ from 'lodash'
 
 export default {
   name: 'besked',
   components: {
     Navigation,
-    Topbar,
-    AddMessage
+    Topbar
+  },
+  data: function() {
+    return {
+      message: {
+        messages: {
+          body: '',
+          author: '',
+          _id: ''
+        }
+      }
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    messageService.getMessageById(to.params.id)
+    .then(response => {
+      if (!response) {
+        next('/');
+      } else {
+        next(vm => {
+          const message = response.data.message;
+          vm.message = message;
+        });
+      }
+    });
+  },
+  methods: {
+    onSubmit: async function() {
+      if (this.message.messages.newBody) {
+        this.message.messages[0].body = this.message.messages.newBody;
+      } else {
+        this.message.messages[0].body = this.message.messages[0].body
+      }
+      
+      const request = {
+        message: this.message
+      }
+
+      await messageService.updateMessage(request);
+      this.$router.push({ name: 'beskeder' });
+    },
+    scrollToEnd: function() {
+      document.getElementById('container').scrollTop = document.getElementById('container').scrollHeight;
+    }
+  },
+  updated(){
+    this.scrollToEnd();
+  },
+  filters: {
+    dateFormat: function(createdAt) {
+      moment.locale('da');
+      return moment(createdAt).format('DD. MMM. HH:mm');
+    }
+  },
+  computed: {
+    orderedMessages: function() {
+      return _.orderBy(this.message.messages, 'createdAt', 'asc');
+    }
   }
 }
 </script>
@@ -69,6 +134,45 @@ export default {
   &.receiver {
     background-color: $light-gray;
     margin-right: 15%;
+  }
+}
+
+.add-message {
+  background: $dark-gray;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
+
+  .message-container {
+    padding: 0 20px;
+  }
+
+  .form {
+    display: flex;
+  }
+
+  input[type='text'] {
+    padding: 10px;
+    border: 2px solid $blue;
+    box-sizing: border-box;
+    margin: 20px 0;
+    width: 100%;
+    outline: none;
+  }
+
+  button {
+    display: block;
+    width: 60px;
+    height: 40px;
+    border: none;
+    background-color: $blue;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    margin: 20px 0;
+    border-right: 2px solid $blue;
   }
 }
 </style>

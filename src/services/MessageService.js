@@ -11,3 +11,7 @@ export function getMessageById(id) {
 export function createMessage(message) {
     return http().post('/message', message);
 }
+
+export function updateMessage(message) {
+    return http().put('/message', message);
+}
