@@ -2,7 +2,7 @@
   <div class="chat">
     <Topbar pageTitle="Ny besked" backButton="/beskeder" />
     <div class="container">
-      <p>View for new messages</p>
+      View for new messages
     </div>
     <div class="add-message">
       <div class="message-container">
@@ -53,7 +53,9 @@ export default {
 @import '@/assets/scss/_all.scss';
 .container {
   margin-top: $barsHeight;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - 80px);
+  padding: 20px;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }
 
@@ -67,6 +69,8 @@ export default {
 
   .message-container {
     padding: 0 20px;
+    max-width: 788px;
+    margin: 0 auto;
   }
 
   .form {

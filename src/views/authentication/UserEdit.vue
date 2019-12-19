@@ -88,7 +88,11 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: 120px;
+  margin-top: $barsHeight;
+  padding: 20px;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  overflow: scroll;
 
   input {
     width: 100%;

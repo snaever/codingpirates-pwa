@@ -2,10 +2,8 @@
   <div class="messages">
     <Topbar pageTitle="Flaskepost" addButton="/beskeder/ny"/>
     <div class="container">
-
       <div v-if="messages && messages.length > 0">
-        <div v-for="message in orderedMessages" v-bind:key="message._id">
-            
+        <div v-for="message in orderedMessages" v-bind:key="message._id"> 
           <router-link :to="{ name: 'besked', params: { id: message._id } }" exact class="message">
             <div class="message">
               <div class="message-header">
@@ -15,12 +13,9 @@
               <p class="message-content">{{ message.messages[message.messages.length-1].body }}</p>
             </div>
           </router-link>
-
         </div>
       </div>
-
       <div v-if="messages && messages.length  === 0">Ingen beskeder fundet.</div>
-
     </div>
     <Navigation />
   </div>
@@ -71,7 +66,8 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: 80px;
+  margin-top: $barsHeight;
+  position: relative;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }

@@ -80,10 +80,11 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: $barsHeight;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   display: flex;
   flex-direction: column;
+  margin-top: $barsHeight;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }
 
@@ -171,6 +172,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  line-height: 1.4;
 
   .more-icon {
     width: 35px;

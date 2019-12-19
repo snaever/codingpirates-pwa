@@ -147,6 +147,8 @@ export default {
 
   .message-container {
     padding: 0 20px;
+    max-width: 788px;
+    margin: 0 auto;
   }
 
   .form {
