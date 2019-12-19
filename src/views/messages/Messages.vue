@@ -5,11 +5,11 @@
       <div class="messages">
         <div class="message sender">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-          <p class="created">19 dec. 12:50</p>
+          <p class="created">19. dec. 12:50</p>
         </div>
         <div class="message receiver">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat eros, eleifend non quam vel, efficitur molestie diam. Suspendisse eget mauris nec enim pulvinar aliquam et eu eros. Proin dignissim arcu quis venenatis malesuada. Duis vestibulum, risus ut placerat malesuada, turpis turpis feugiat dui, et consequat ex sapien a lectus.</p>
-          <p class="created">19 dec. 13:17</p>
+          <p class="created">19. dec. 13:17</p>
         </div>
       </div>
     </div>
