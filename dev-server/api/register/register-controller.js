@@ -12,7 +12,11 @@ export function index(req, res) {
         password: req.body.password,
         name: req.body.name,
         nameOfChild: req.body.nameOfChild,
-        isAdmin: req.body.isAdmin
+        isAdmin: req.body.isAdmin,
+        permissions: {
+            takePhotos: false,
+            usePhotos: false
+        }
     });
     user.save(error => {
         if (error) {
