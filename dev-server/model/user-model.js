@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
     name: String,
     nameOfChild: String,
     password: String,
-    isAdmin: Boolean
+    isAdmin: Boolean,
+    permissions: {
+        takePhotos: Boolean,
+        usePhotos: Boolean
+    }
 });
 userSchema.set('timestamps', true);
 

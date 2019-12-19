@@ -2,20 +2,27 @@
   <div class="permissions">
     <Topbar pageTitle="Tilladelser" backButton="/mere"/>
     <div class="container">
-      <div class="item">
-        <p class="item-title">Der må tages billeder af mit barn</p>
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </div>
-      <div class="item">
-        <p class="item-title">Billeder af mit barn på bruges offentligt</p>
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </div>
+      <form v-on:submit.prevent="onSubmit">
+        <div class="item">
+          <p class="item-title">Der må tages billeder af mit barn</p>
+          <div class="switch-container">
+            <label class="switch">
+              <input v-model="user.permissions.takePhotos" type="checkbox" name="takePhotos" id="takePhotos">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div class="item">
+          <p class="item-title">Billeder af mit barn på bruges offentligt</p>
+          <div class="switch-container">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <button type="submit">Opdater tilladelser</button>
+      </form>
     </div>
     <Navigation />
   </div>
@@ -25,12 +32,46 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
+import * as userService from '../services/UserService'
+import { getUserId } from '../services/AuthService'
 
 export default {
   name: 'tilladelser',
   components: {
     Navigation,
     Topbar
+  },
+  data: function() {
+    return {
+      user: {
+        permissions: {
+          takePhotos: false,
+          usePhotos: false
+        }
+      }
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    userService.getUserById(getUserId())
+    .then(response => {
+      if (!response) {
+        next('/');
+      } else {
+        next(vm => {
+          const user = response.data.user;
+          vm.user = user;
+        });
+      }
+    });
+  },
+  methods: {
+    onSubmit: async function() {
+      const request = {
+        user: this.user
+      }
+      await userService.updateUser(request);
+      this.$router.push({ name: 'mere' });
+    }
   }
 }
 </script>
@@ -46,66 +87,81 @@ export default {
   overflow: scroll;
 }
 
+button {
+  display: block;
+  width: 100%;
+  height: 38px;
+  border: none;
+  background-color: $blue;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+}
+
 /* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
+.switch-container {
   width: 60px;
-  height: 34px;
 
-  /* Hide default HTML checkbox */
-  input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $dark-gray;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+    /* Hide default HTML checkbox */
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $dark-gray;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
-  input:checked + .slider {
-    background-color: $blue;
-  }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
 
-  input:focus + .slider {
-    box-shadow: 0px;
-  }
+    input:checked + .slider {
+      background-color: $blue;
+    }
 
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
+    input:focus + .slider {
+      box-shadow: 0px;
+    }
 
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
 
-  .slider.round:before {
-    border-radius: 50%;
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
   }
 }
 
