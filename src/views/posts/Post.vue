@@ -59,7 +59,7 @@ export default {
   filters: {
     dateFormat: function (createdAt) {
       moment.locale('da');
-      return moment(createdAt).format('DD MMM. H:mm');
+      return moment(createdAt).format('DD. MMM. HH:mm');
     }
   },
   methods: {

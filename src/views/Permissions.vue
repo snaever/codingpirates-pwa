@@ -16,7 +16,7 @@
           <p class="item-title">Billeder af mit barn på bruges offentligt</p>
           <div class="switch-container">
             <label class="switch">
-              <input type="checkbox">
+              <input v-model="user.permissions.usePhotos" type="checkbox" name="usePhotos" id="usePhotos">
               <span class="slider round"></span>
             </label>
           </div>

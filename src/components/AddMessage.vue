@@ -49,6 +49,7 @@ export default {
     text-align: center;
     color: white;
     margin: 20px 0;
+    border-right: 2px solid $blue;
   }
 }
 </style>
