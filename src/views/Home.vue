@@ -39,6 +39,7 @@
 import NextEvent from '@/components/NextEvent.vue'
 import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
+import * as eventService from '../services/EventService'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -60,6 +61,13 @@ export default {
         vm.posts = res.data.posts;
       })
     })
+  },
+  mounted() {
+    eventService.getAllEvents()
+      .then(response => response)
+      .then((data) => {
+        console.log(data);
+      })
   },
   filters: {
     dateFormat: function(createdAt) {
