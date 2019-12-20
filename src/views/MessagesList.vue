@@ -68,6 +68,7 @@ export default {
 .container {
   margin-top: $barsHeight;
   position: relative;
+  padding: 20px;
   height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }
@@ -80,6 +81,10 @@ a.message {
 .message {
   border-bottom: 1px solid $dark-gray;
   padding: 20px 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
 
   &-header {
     display: flex;

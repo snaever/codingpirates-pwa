@@ -12,7 +12,6 @@
           </router-link>
         </div>
       </div>
-      <div v-if="events && events.length  === 0">Ingen events fundet.</div>
     </div>
     <Navigation />
   </div>

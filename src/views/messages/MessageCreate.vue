@@ -2,7 +2,7 @@
   <div class="chat">
     <Topbar pageTitle="Ny besked" backButton="/beskeder" />
     <div class="container">
-      View for new messages
+      
     </div>
     <div class="add-message">
       <div class="message-container">
