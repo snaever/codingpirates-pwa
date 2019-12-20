@@ -14,12 +14,11 @@
       </header>
       <div class="container">
         <div class="notice">
-          <h3>Næste gang</h3>
+          <h3>Næste klubaften</h3>
           <div v-for="event in events.data.events" v-bind:key="event._id">
-            {{ event.dateTime }}
+            <p>{{ event.dateTime | dateFormatEvent }}</p>
+            <p>Kl. {{ event.dateTime | timeFormatEvent }}</p>
           </div>
-          <p>Onsdag d. 23 oktober</p>
-          <p>17:00 - 18:30</p>
         </div>
 
         <div v-if="posts && posts.length > 0">
@@ -30,7 +29,7 @@
                 <div class="box">
                   <p class="author">{{ post.author.name }}</p>
                   <p class="message">{{ post.body }}</p>
-                  <p class="created">{{ post.createdAt | dateFormat }}</p>
+                  <p class="created">{{ post.createdAt | dateFormatPost }}</p>
                 </div>
               </div>
             </router-link>
@@ -82,14 +81,30 @@ export default {
     })
   },
   filters: {
-    dateFormat: function(createdAt) {
+    dateFormatPost: function(createdAt) {
       moment.locale('da');
       return moment(createdAt).format('DD. MMM. HH:mm');
-    }
+    },
+    dateFormatEvent: function(dateTime) {
+      moment.locale('da');
+      return moment(dateTime).format('DD. MMMM');
+    },
+    timeFormatEvent: function(dateTime) {
+      moment.locale('da');
+      return moment(dateTime).format('HH:mm');
+    },
   },
   computed: {
     orderedPosts: function() {
       return _.orderBy(this.posts, 'createdAt', 'desc');
+    },
+    futureEvents: function () {
+      return this.events.data.events.filter(function (event) {
+        return moment(event.dateTime).isSameOrAfter(moment().format('YYYY-MM-DD'));
+      })
+    },
+    orderedEvents: function () {
+      return _.orderBy(this.futureEvents, 'dateTime', 'asc');
     }
   },
   methods: {
@@ -162,7 +177,7 @@ export default {
   p {
     font-family: $body-font;
     font-size: 13pt;
-    margin: 5px 0;
+    margin: 10px 0 0;
   }
 }
 
