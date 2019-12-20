@@ -6,14 +6,6 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/next-event',
-    name: 'next-event',
-    component: () => import('../components/NextEvent.vue'),
-    meta: {
-      title: 'Next Event'
-    }
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import('../views/authentication/Login.vue'),
