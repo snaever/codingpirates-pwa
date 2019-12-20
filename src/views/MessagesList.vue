@@ -48,10 +48,22 @@ export default {
       })
     })
   },
+  updated() {
+    this.isMyMessages();
+  },
   filters: {
     dateFormat: function(createdAt) {
       moment.locale('da');
       return moment(createdAt).format('DD. MMM. HH:mm');
+    }
+  },
+  methods: {
+    isMyMessages: function() {
+      if(this.messages.author._id === this.$store.state.userId) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   computed: {

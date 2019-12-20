@@ -84,7 +84,7 @@ export default {
       document.getElementById('container').scrollTop = document.getElementById('container').scrollHeight;
     }
   },
-  updated(){
+  updated() {
     this.scrollToEnd();
   },
   filters: {

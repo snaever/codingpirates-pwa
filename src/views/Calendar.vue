@@ -37,7 +37,7 @@ export default {
     Navigation,
     Topbar
   },
-    beforeRouteEnter(to, from, next) {
+  beforeRouteEnter(to, from, next) {
     eventService.getAllEvents()
     .then(res => {
       next(vm => {
