@@ -51,35 +51,8 @@ export function show(req, res) {
     .populate('messages.author', 'name', 'user')
 }
 
-export function update_old(req, res) {
-    // UPDATE MESSAGE
-    const id = auth.getUserId(req);
-
-    User.findOne({ _id: id }, (error, user) => {
-        if (error) {
-            return res.status(500).json();
-        }
-        if (!user) {
-            return res.status(404).json();
-        }
-
-        const message = new Message(req.body.message);
-        message.author = user._id;
-        Message.findByIdAndUpdate({ _id: message._id }, message, error => {
-            if (error) {
-                return res.status(500).json();
-            }
-            return res.status(204).json();
-        });
-    });
-}
-
 export function update(req, res) {
     const message = new Message(req.body.message);
-
-    console.log('---------------');
-    console.log(req.body.message.messages[0]);
-    console.log('---------------');
     
     var request = { body: req.body.message.messages[0].body, author: auth.getUserId(req)  };
 
