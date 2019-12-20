@@ -5,7 +5,7 @@
       <div v-if="messages && messages.length > 0">
         <div v-for="message in orderedMessages" v-bind:key="message._id"> 
           <router-link :to="{ name: 'besked', params: { id: message._id } }" exact class="message">
-            <div class="message">
+            <div class="message" v-if="message.author._id === $store.state.userId || $store.state.isAdmin">
               <div class="message-header">
                 <div class="message-subject">{{ message.messages[message.messages.length-1].author.name }}</div>
                 <div class="message-date">{{ message.updatedAt | dateFormat }}</div>
@@ -48,22 +48,10 @@ export default {
       })
     })
   },
-  updated() {
-    this.isMyMessages();
-  },
   filters: {
     dateFormat: function(createdAt) {
       moment.locale('da');
       return moment(createdAt).format('DD. MMM. HH:mm');
-    }
-  },
-  methods: {
-    isMyMessages: function() {
-      if(this.messages.author._id === this.$store.state.userId) {
-        return true
-      } else {
-        return false
-      }
     }
   },
   computed: {
