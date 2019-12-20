@@ -103,8 +103,13 @@ export default {
         return moment(event.dateTime).isSameOrAfter(moment().format('YYYY-MM-DD'));
       })
     },
+    regularSession: function () {
+      return this.futureEvents.filter (function (event) {
+        return event.regularSession;
+      })
+    },
     orderedEvents: function () {
-      return _.orderBy(this.futureEvents, 'dateTime', 'asc');
+      return _.orderBy(this.regularSession, 'dateTime', 'asc');
     }
   },
   methods: {
