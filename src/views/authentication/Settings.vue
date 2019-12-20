@@ -17,8 +17,8 @@
 <script>
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
-import * as userService from '../services/UserService'
-import { getUserId } from '../services/AuthService'
+import * as userService from '../../services/UserService'
+import { getUserId } from '../../services/AuthService'
 import bcrypt from 'bcrypt-nodejs';
 
 export default {
