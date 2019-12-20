@@ -64,10 +64,11 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: $barsHeight;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   display: flex;
   flex-direction: column;
+  margin-top: $barsHeight;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }
 

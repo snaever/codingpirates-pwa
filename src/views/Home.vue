@@ -85,7 +85,7 @@ export default {
 
 .home-container {
   height: 100%;
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 
 .info {

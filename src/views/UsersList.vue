@@ -56,7 +56,9 @@ export default {
 @import '@/assets/scss/_all.scss';
 
 .container {
-  margin-top: 80px;
+  margin-top: $barsHeight;
+  position: relative;
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
   overflow: scroll;
 }
 
