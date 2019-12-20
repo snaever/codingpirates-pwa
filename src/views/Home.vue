@@ -13,7 +13,15 @@
         </div>
       </header>
       <div class="container">
-        <NextEvent />
+        <div class="notice">
+          <h3>Næste gang</h3>
+          <div v-for="event in events.data.events" v-bind:key="event._id">
+            {{ event.dateTime }}
+          </div>
+          <p>Onsdag d. 23 oktober</p>
+          <p>17:00 - 18:30</p>
+        </div>
+
         <div v-if="posts && posts.length > 0">
           <div v-for="post in orderedPosts" v-bind:key="post._id">
             <router-link :to="{ name: 'post', params: { id: post._id } }" exact class="post">
@@ -36,7 +44,6 @@
 </template>
 
 <script>
-import NextEvent from '@/components/NextEvent.vue'
 import Navigation from '@/components/Navigation.vue'
 import * as postService from '../services/PostService'
 import * as eventService from '../services/EventService'
@@ -47,11 +54,15 @@ export default {
   name: 'hjem',
   data: function() {
     return {
-      posts: null
+      posts: null,
+      events: {
+        data: {
+          events: null
+        }
+      }
     }
   },
   components: {
-    NextEvent,
     Navigation
   },
   beforeRouteEnter(to, from, next) {
@@ -64,10 +75,11 @@ export default {
   },
   mounted() {
     eventService.getAllEvents()
-      .then(response => response)
-      .then((data) => {
-        console.log(data);
-      })
+    .then(response => response)
+    .then((data) => {
+      this.events = data;
+      console.log(this.events.data.events);
+    })
   },
   filters: {
     dateFormat: function(createdAt) {
@@ -132,6 +144,25 @@ export default {
         margin: 7px 0 0 0;
       }
     }
+  }
+}
+
+.notice {
+  display: block;
+  background-color: $dark-gray;
+  padding: 15px;
+  margin: 20px 0;
+
+  h3 {
+    font-family: $heading-font;
+    font-size: 11pt;
+    margin: 0 0 10px 0;
+  }
+
+  p {
+    font-family: $body-font;
+    font-size: 13pt;
+    margin: 5px 0;
   }
 }
 
