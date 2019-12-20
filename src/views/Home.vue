@@ -13,9 +13,10 @@
         </div>
       </header>
       <div class="container">
-        <div class="notice">
+
+        <div class="notice" v-if="events.data.events">
           <h3>Næste klubaften</h3>
-          <div v-for="event in events.data.events" v-bind:key="event._id">
+          <div v-for="event in orderedEvents.slice(0, 1)" v-bind:key="event._id">
             <p>{{ event.dateTime | dateFormatEvent }}</p>
             <p>Kl. {{ event.dateTime | timeFormatEvent }}</p>
           </div>
@@ -54,11 +55,7 @@ export default {
   data: function() {
     return {
       posts: null,
-      events: {
-        data: {
-          events: null
-        }
-      }
+      events: { data: [] }
     }
   },
   components: {
@@ -72,12 +69,11 @@ export default {
       })
     })
   },
-  mounted() {
+  beforeCreate() {
     eventService.getAllEvents()
     .then(response => response)
     .then((data) => {
       this.events = data;
-      console.log(this.events.data.events);
     })
   },
   filters: {
