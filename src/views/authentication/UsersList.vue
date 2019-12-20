@@ -23,7 +23,7 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
-import * as userService from '../services/UserService'
+import * as userService from '../../services/UserService'
 
 export default {
   name: 'brugerliste',

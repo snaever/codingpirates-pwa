@@ -151,7 +151,7 @@ const routes = [
   {
     path: '/beskeder',
     name: 'beskeder',
-    component: () => import('../views/messages/MessagesList.vue'),
+    component: () => import('../views/MessagesList.vue'),
     meta: {
       title: 'Flaskepost'
     },
@@ -211,7 +211,7 @@ const routes = [
   {
     path: '/indstillinger',
     name: 'indstillinger',
-    component: () => import('../views/Settings.vue'),
+    component: () => import('../views/authentication/Settings.vue'),
     meta: {
       title: 'Kontoindstillinger'
     },
@@ -226,7 +226,7 @@ const routes = [
   {
     path: '/tilladelser',
     name: 'tilladelser',
-    component: () => import('../views/Permissions.vue'),
+    component: () => import('../views/authentication/Permissions.vue'),
     meta: {
       title: 'Tilladelser'
     },
@@ -256,7 +256,7 @@ const routes = [
   {
     path: '/brugere',
     name: 'brugerliste',
-    component: () => import('../views/UsersList.vue'),
+    component: () => import('../views/authentication/UsersList.vue'),
     meta: {
       title: 'Aktive brugere'
     },

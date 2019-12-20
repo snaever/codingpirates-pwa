@@ -25,7 +25,7 @@
 // @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Topbar from '@/components/Topbar.vue'
-import * as messageService from '../../services/MessageService'
+import * as messageService from '../services/MessageService'
 import _ from 'lodash'
 import moment from 'moment'
 
