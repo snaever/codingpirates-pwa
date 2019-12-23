@@ -49,14 +49,14 @@ export default {
 .container {
   margin-top: $barsHeight;
   padding: 20px;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom));
   overflow: scroll;
 
   input {
     width: 100%;
     height: 38px;
     margin-bottom: 20px;
+    outline: none;
   }
 
   input[type='text'] {
@@ -71,6 +71,7 @@ export default {
     box-sizing: border-box;
     width: 100%;
     margin-bottom: 20px;
+    outline: none;
   }
 
   button {

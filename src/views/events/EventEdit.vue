@@ -120,14 +120,14 @@ Settings.defaultLocale = 'da'
 .container {
   margin-top: $barsHeight;
   padding: 20px;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   overflow: scroll;
 
   input {
     width: 100%;
     height: 38px;
     margin-bottom: 20px;
+    outline: none;
   }
 
   input[type='text'] {
@@ -142,6 +142,7 @@ Settings.defaultLocale = 'da'
     box-sizing: border-box;
     width: 100%;
     margin-bottom: 20px;
+    outline: none;
   }
 
   button {

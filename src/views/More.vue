@@ -2,14 +2,16 @@
   <div class="mere">
     <Topbar pageTitle="Mere" />
     <div class="container">
-      <router-link to="/indstillinger" class="item">
-        <img src="../assets/icons/settings.svg" alt="settings" class="more-icon">
-        <div class="item-title">Kontoindstillinger</div>
-      </router-link>
-      <router-link to="/tilladelser" class="item">
-        <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
-        <div class="item-title">Tilladelser</div>
-      </router-link>
+      <div class="menu">
+        <router-link to="/indstillinger" class="item">
+          <img src="../assets/icons/settings.svg" alt="settings" class="more-icon">
+          <div class="item-title">Kontoindstillinger</div>
+        </router-link>
+        <router-link to="/tilladelser" class="item">
+          <img src="../assets/icons/permissions.svg" alt="permissions" class="more-icon">
+          <div class="item-title">Tilladelser</div>
+        </router-link>
+      </div>
       <div v-if="this.$store.state.isAdmin">
         <h3>Admin adgang</h3>
         <router-link to="/event/ny" class="item">
@@ -29,10 +31,11 @@
           <div class="item-title">Aktive brugere</div>
         </router-link>
       </div>
-
-      <div v-on:click.prevent="logout()" class="item">
-        <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
-        <div class="logout-title">Log ud</div>
+      <div class="logout">
+        <div v-on:click.prevent="logout()" class="item">
+          <img src="../assets/icons/sign-out.svg" alt="logout" class="more-icon">
+          <div class="logout-title">Log ud</div>
+        </div>
       </div>
     </div>
     <Navigation />
@@ -67,8 +70,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: $barsHeight;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   overflow: scroll;
 }
 

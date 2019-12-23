@@ -83,8 +83,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin-top: $barsHeight;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   overflow: scroll;
 }
 

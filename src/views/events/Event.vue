@@ -55,7 +55,7 @@ export default {
   filters: {
     dateFormat: function (dateTime) {
       moment.locale('da');
-      return moment(dateTime).format('LLL');
+      return moment(dateTime).format('DD. MMM. HH:mm');
     }
   },
   methods: {
@@ -73,8 +73,7 @@ export default {
 .container {
   margin-top: $barsHeight;
   padding: 20px;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   overflow: scroll;
 }
 

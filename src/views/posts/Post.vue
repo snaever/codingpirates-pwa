@@ -80,8 +80,7 @@ export default {
 .container {
   margin-top: $barsHeight;
   padding: 20px;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight});
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - env(safe-area-inset-bottom));
   overflow: scroll;
 }
 

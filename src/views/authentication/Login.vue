@@ -64,6 +64,7 @@ export default {
     width: 100%;
     height: 38px;
     margin-bottom: 20px;
+    outline: none;
   }
 
   input[type='text'],

@@ -106,8 +106,7 @@ export default {
 .container {
   margin-top: $barsHeight;
   padding-bottom: 20px;
-  position: relative;
-  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - 80px);
+  height: calc(100vh - #{$barsHeight} - #{$barsHeight} - 80px - env(safe-area-inset-bottom) - env(safe-area-inset-top));
   overflow: scroll;
 }
 
@@ -162,12 +161,13 @@ export default {
     margin: 20px 0;
     width: 100%;
     outline: none;
+    border-radius: 0 !important;
   }
 
   button {
     display: block;
     width: 60px;
-    height: 40px;
+    height: 42px;
     border: none;
     background-color: $blue;
     cursor: pointer;
