@@ -46,7 +46,7 @@ export default {
 
   h1 {
     font-family: $heading-font;
-    font-size: 22pt;
+    font-size: 19pt;
   }
 
   img {
